@@ -31,7 +31,7 @@ export const FishCard = ({ fish, selected, onClick }: FishCardProps) => {
       whileHover={{ scale: 1.02, y: -4 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className={`w-full text-left p-4 rounded-2xl transition-all duration-300 ${
+      className={`relative w-full text-left p-4 rounded-2xl transition-all duration-300 ${
         selected
           ? 'bg-primary/20 border-2 border-primary shadow-glow'
           : 'glass-card-hover'

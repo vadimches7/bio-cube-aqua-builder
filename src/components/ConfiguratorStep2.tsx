@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { AquariumConfig, SelectedFish, Fish } from '@/types/aquarium';
 import { getFishByType } from '@/data/fishDatabase';
 import { Button } from '@/components/ui/button';
@@ -79,19 +78,13 @@ export const ConfiguratorStep2 = ({ config, onAddFish, onBack, onNext }: Configu
 
       {/* Fish grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-h-[400px] overflow-y-auto pr-2 scrollbar-hide">
-        {filteredFish.map((fish, index) => (
-          <motion.div
+        {filteredFish.map((fish) => (
+          <FishCard
             key={fish.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.05 }}
-          >
-            <FishCard
-              fish={fish}
-              selected={isSelected(fish.id)}
-              onClick={() => setSelectedFish(fish)}
-            />
-          </motion.div>
+            fish={fish}
+            selected={isSelected(fish.id)}
+            onClick={() => setSelectedFish(fish)}
+          />
         ))}
       </div>
 
