@@ -1,0 +1,148 @@
+[
+  {
+    "id": 101,
+    "name_ru": "Клоун Оцеллярис",
+    "name_lat": "Amphiprion ocellaris",
+    "type": "saltwater",
+    "family_group": "Клоуны",
+    "size_cm": 8,
+    "min_tank_liters": 60,
+    "bio_load_points": 5,
+    "temperament": "Мирный",
+    "min_group_size": 2,
+    "difficulty": 1,
+    "reef_safe": true,
+    "water_params": {
+      "ph_min": 8.1,
+      "ph_max": 8.4,
+      "salinity": 1.025,
+      "temp_min": 24,
+      "temp_max": 27
+    },
+    "incompatible_tags": ["aggressive_marine"],
+    "description_short": "Культовая морская рыба с яркой окраской. Живёт в симбиозе с актиниями.",
+    "features_list": [
+      "Требует актинию для комфорта.",
+      "Мирный, защищает свою территорию.",
+      "Подходит для рифовых аквариумов.",
+      "Нужна стабильная солёность."
+    ]
+  },
+  {
+    "id": 105,
+    "name_ru": "Хирург Голубой (Дори)",
+    "name_lat": "Paracanthurus hepatus",
+    "type": "saltwater",
+    "family_group": "Хирурги",
+    "size_cm": 25,
+    "min_tank_liters": 300,
+    "bio_load_points": 15,
+    "temperament": "Полуагрессивный",
+    "min_group_size": 1,
+    "difficulty": 2,
+    "reef_safe": true,
+    "water_params": {
+      "ph_min": 8.1,
+      "ph_max": 8.4,
+      "salinity": 1.025,
+      "temp_min": 24,
+      "temp_max": 27
+    },
+    "incompatible_tags": ["small_aquarium", "other_tang"],
+    "description_short": "Яркий морской хирург. Активный пловец, требует большой объём и стабильную воду.",
+    "features_list": [
+      "Минимум 300 литров.",
+      "Лучше содержать одного.",
+      "Совместим с рифом.",
+      "Нужна стабильная солёность."
+    ]
+  },
+  {
+    "id": 107,
+    "name_ru": "Мандаринка Глянцевая",
+    "name_lat": "Synchiropus splendidus",
+    "type": "saltwater",
+    "family_group": "Лировые",
+    "size_cm": 7,
+    "min_tank_liters": 100,
+    "bio_load_points": 3,
+    "temperament": "Мирный",
+    "min_group_size": 1,
+    "difficulty": 3,
+    "reef_safe": true,
+    "water_params": {
+      "ph_min": 8.1,
+      "ph_max": 8.4,
+      "salinity": 1.025,
+      "temp_min": 24,
+      "temp_max": 27
+    },
+    "incompatible_tags": ["no_live_rock_aquarium"],
+    "description_short": "Одна из самых ярких морских рыб. Требует живой камень и стабильные параметры воды.",
+    "features_list": [
+      "Нужен живой камень и копеподы.",
+      "Сложный в кормлении.",
+      "Совместим с рифом.",
+      "Мирный сосед для спокойных рыб."
+    ]
+  },
+  {
+    "id": 113,
+    "name_ru": "Центропиг Огненный",
+    "name_lat": "Centropyge loricula",
+    "type": "saltwater",
+    "family_group": "Ангелы_Карликовые",
+    "size_cm": 10,
+    "min_tank_liters": 150,
+    "bio_load_points": 8,
+    "temperament": "Территориальный",
+    "min_group_size": 1,
+    "difficulty": 2,
+    "reef_safe": false,
+    "water_params": {
+      "ph_min": 8.1,
+      "ph_max": 8.4,
+      "salinity": 1.025,
+      "temp_min": 24,
+      "temp_max": 27
+    },
+    "incompatible_tags": ["small_invertebrates"],
+    "description_short": "Яркий карликовый ангел. Может щипать кораллы и беспозвоночных.",
+    "features_list": [
+      "Может портить кораллы.",
+      "Лучше содержать поодиночке.",
+      "Требуются укрытия.",
+      "Средний/нижний слой."
+    ]
+  },
+  {
+    "id": 115,
+    "name_ru": "Крылатка-Зебра",
+    "name_lat": "Pterois volitans",
+    "type": "saltwater",
+    "family_group": "Скорпеновые",
+    "size_cm": 35,
+    "min_tank_liters": 300,
+    "bio_load_points": 20,
+    "temperament": "Хищник",
+    "min_group_size": 1,
+    "difficulty": 2,
+    "reef_safe": false,
+    "water_params": {
+      "ph_min": 8.1,
+      "ph_max": 8.4,
+      "salinity": 1.025,
+      "temp_min": 24,
+      "temp_max": 27
+    },
+    "incompatible_tags": ["small_fish_prey", "invertebrates"],
+    "description_short": "Эффектный хищник с ядовитыми шипами. Опасен для мелких рыб и креветок.",
+    "features_list": [
+      "Съедает мелких рыб.",
+      "Опасен для беспозвоночных.",
+      "Нужен объём от 300л.",
+      "Осторожность при обслуживании."
+    ]
+  }
+]
+

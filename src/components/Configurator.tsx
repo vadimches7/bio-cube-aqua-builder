@@ -104,13 +104,15 @@ export const Configurator = () => {
         <div className="grid lg:grid-cols-12 gap-8">
           {/* Left: Preview */}
           <div className="lg:col-span-5">
-            <div className="sticky top-8">
+            <div className="sticky top-8 space-y-6">
               <AquariumPreview config={config} />
-              
-              {/* Mobile: Show compatibility panel below preview */}
-              <div className="lg:hidden mt-6">
-                <CompatibilityPanel config={config} onUpdateCount={updateFishCount} onRemove={removeFish} />
-              </div>
+
+              {/* Всегда показываем блок «Ваш аквариум» под «Общий» */}
+              <CompatibilityPanel
+                config={config}
+                onUpdateCount={updateFishCount}
+                onRemove={removeFish}
+              />
             </div>
           </div>
 
@@ -193,10 +195,6 @@ export const Configurator = () => {
               </AnimatePresence>
             </div>
 
-            {/* Desktop: Compatibility panel */}
-            <div className="hidden lg:block mt-6">
-              <CompatibilityPanel config={config} onUpdateCount={updateFishCount} onRemove={removeFish} />
-            </div>
           </div>
         </div>
       </div>

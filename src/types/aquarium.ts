@@ -12,6 +12,14 @@ export type FishTemperament = 'peaceful' | 'semi-aggressive' | 'aggressive';
 
 export type CompatibilityStatus = 'excellent' | 'good' | 'risky' | 'incompatible';
 
+export interface WaterParams {
+  phMin?: number;
+  phMax?: number;
+  tempMin?: number;
+  tempMax?: number;
+  salinity?: number;
+}
+
 export interface Fish {
   id: string;
   name: string;
@@ -28,6 +36,10 @@ export interface Fish {
   incompatibleWith: string[];
   description: string;
   careLevel: string;
+  waterParams?: WaterParams; // Параметры воды
+  sizeCm?: number; // Размер рыбы в см
+  familyGroup?: string; // Семейство
+  incompatibleTags?: string[]; // Теги несовместимости
 }
 
 export interface SelectedFish {
@@ -49,6 +61,8 @@ export interface CompatibilityResult {
   volumeCapacity: number;
   warnings: string[];
   conflicts: string[];
+  waterParamsWarnings?: string[]; // Предупреждения о параметрах воды
+  optimalWaterParams?: WaterParams; // Оптимальные параметры воды
 }
 
 export const AQUARIUM_TYPES: { id: AquariumType; name: string; description: string }[] = [

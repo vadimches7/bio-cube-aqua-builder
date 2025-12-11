@@ -77,7 +77,7 @@ export const ConfiguratorStep2 = ({ config, onAddFish, onBack, onNext }: Configu
       </div>
 
       {/* Fish grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-h-[400px] overflow-y-auto pr-2 scrollbar-hide">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-h-[700px] overflow-y-auto pr-2 scrollbar-hide">
         {filteredFish.map((fish) => (
           <FishCard
             key={fish.id}

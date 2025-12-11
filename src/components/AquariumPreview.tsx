@@ -10,15 +10,16 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
   
   // Calculate fill level based on selected fish
   const totalFishVolume = config.selectedFish.reduce((acc, sf) => {
-    return acc + (sf.fish.minVolume * sf.count * 0.5);
+    return acc + sf.fish.minVolume * sf.count * 0.5;
   }, 0);
   const fillPercentage = Math.min((totalFishVolume / config.volume) * 100, 100);
+  const waterHeight = `${Math.max(18, Math.min(88, 28 + fillPercentage * 0.6))}%`;
   
   // Determine color based on compatibility
   const getWaterColor = () => {
-    if (fillPercentage > 80) return 'from-destructive/30 to-destructive/10';
-    if (fillPercentage > 60) return 'from-warning/30 to-warning/10';
-    return 'from-primary/30 to-accent/10';
+    if (fillPercentage > 80) return 'from-destructive/40 via-destructive/25 to-destructive/15';
+    if (fillPercentage > 60) return 'from-warning/35 via-warning/20 to-warning/10';
+    return 'from-primary/35 via-primary/20 to-accent/15';
   };
 
   return (
@@ -40,32 +41,43 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
       </div>
 
       {/* Aquarium visualization */}
-      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-ocean-deep border border-glass/10">
+      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-b from-[#0d1a24] via-[#0a121a] to-[#0a161f] border border-glass/10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.65)]">
         {/* Glass frame effect */}
-        <div className="absolute inset-0 rounded-2xl border-4 border-glass/5 z-20 pointer-events-none" />
+        <div className="absolute inset-0 rounded-2xl border border-glass/10 shadow-inner pointer-events-none" />
         
         {/* Top light reflection */}
-        <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-glass/10 to-transparent z-10" />
+        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white/10 via-white/5 to-transparent z-10" />
+
+        {/* Ambient glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(71,255,235,0.08),transparent_35%),radial-gradient(circle_at_80%_25%,rgba(120,190,255,0.08),transparent_30%)]" />
         
-        {/* Water */}
+        {/* Water fill */}
         <motion.div
-          className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t ${getWaterColor()}`}
-          initial={{ height: '70%' }}
-          animate={{ height: '70%' }}
-          transition={{ duration: 0.5 }}
-        />
+          className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t ${getWaterColor()} backdrop-blur-[1px]`}
+          initial={{ height: waterHeight }}
+          animate={{ height: waterHeight }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          {/* Surface shine */}
+          <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/15 to-transparent" />
+          {/* Caustics */}
+          <div className="absolute inset-0 mix-blend-screen opacity-30 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_30%),radial-gradient(circle_at_70%_10%,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_40%_70%,rgba(255,255,255,0.08),transparent_26%)] animate-pulse" />
+        </motion.div>
         
         {/* Light rays */}
-        <div className="absolute top-0 left-1/4 w-16 h-full bg-gradient-to-b from-primary/20 via-primary/5 to-transparent blur-xl" />
-        <div className="absolute top-0 right-1/3 w-12 h-full bg-gradient-to-b from-accent/15 via-accent/5 to-transparent blur-xl" />
-        
+        <div className="absolute top-0 left-1/4 w-16 h-full bg-gradient-to-b from-primary/20 via-primary/5 to-transparent blur-2xl" />
+        <div className="absolute top-0 right-1/3 w-12 h-full bg-gradient-to-b from-accent/15 via-accent/5 to-transparent blur-2xl" />
+
+        {/* Foreground vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.25)_90%)] pointer-events-none" />
+
         {/* Animated fish */}
         {config.selectedFish.slice(0, 8).map((sf, index) => (
           <motion.div
             key={sf.fish.id}
             className="absolute"
             style={{
-              top: sf.fish.zone === 'top' ? '15%' : sf.fish.zone === 'bottom' ? '65%' : '40%',
+              top: sf.fish.zone === 'top' ? '18%' : sf.fish.zone === 'bottom' ? '68%' : '42%',
             }}
             animate={{
               x: ['0%', `${150 + index * 30}%`, '0%'],
@@ -79,7 +91,7 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
             }}
           >
             <div 
-              className="w-6 h-3 rounded-full bg-gradient-to-r from-primary/60 to-accent/40"
+              className="w-7 h-3.5 rounded-full bg-gradient-to-r from-primary/70 via-primary/50 to-accent/40 shadow-[0_0_12px_-4px_rgba(45,255,200,0.8)]"
               style={{
                 transform: `scale(${0.8 + (sf.count * 0.1)})`,
               }}
@@ -94,7 +106,7 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
             className="absolute w-2 h-2 rounded-full bg-glass/30"
             style={{
               left: `${20 + i * 12}%`,
-              bottom: '10%',
+              bottom: '12%',
             }}
             animate={{
               y: [0, -200],
@@ -109,6 +121,27 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
           />
         ))}
         
+        {/* Floating particles */}
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={`p-${i}`}
+            className="absolute w-1.5 h-1.5 rounded-full bg-white/25 blur-[1px]"
+            style={{
+              left: `${10 + i * 8}%`,
+              top: `${20 + (i % 5) * 12}%`,
+            }}
+            animate={{
+              y: [0, i % 2 === 0 ? -12 : 12, 0],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{
+              duration: 4 + i * 0.3,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
+
         {/* Plants/decoration based on type */}
         <div className="absolute bottom-0 left-0 right-0 h-1/4">
           {config.type === 'planted' && (

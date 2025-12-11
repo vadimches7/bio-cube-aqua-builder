@@ -1,0 +1,703 @@
+[
+  {
+    "id": 1,
+    "name_ru": "Неон Голубой",
+    "name_lat": "Paracheirodon innesi",
+    "type": "freshwater",
+    "family_group": "Харациновые",
+    "size_cm": 4,
+    "min_tank_liters": 40,
+    "bio_load_points": 2,
+    "temperament": "Мирный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 5.0,
+      "ph_max": 7.0,
+      "temp_min": 20,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["large_predator", "fin_nipper", "high_ph_water"]
+  },
+  {
+    "id": 2,
+    "name_ru": "Неон Красный",
+    "name_lat": "Paracheirodon axelrodi",
+    "type": "freshwater",
+    "family_group": "Харациновые",
+    "size_cm": 5,
+    "min_tank_liters": 50,
+    "bio_load_points": 2,
+    "temperament": "Мирный",
+    "min_group_size": 6,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 5.0,
+      "ph_max": 6.5,
+      "temp_min": 23,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["large_predator", "fin_nipper", "high_ph_water"]
+  },
+  {
+    "id": 3,
+    "name_ru": "Тетра Конго",
+    "name_lat": "Phenacogrammus interruptus",
+    "type": "freshwater",
+    "family_group": "Харациновые",
+    "size_cm": 9,
+    "min_tank_liters": 100,
+    "bio_load_points": 5,
+    "temperament": "Мирный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["large_predator", "long_fins"]
+  },
+  {
+    "id": 4,
+    "name_ru": "Тернеция (Глофиш)",
+    "name_lat": "Gymnocorymbus ternetzi",
+    "type": "freshwater",
+    "family_group": "Харациновые",
+    "size_cm": 6,
+    "min_tank_liters": 60,
+    "bio_load_points": 3,
+    "temperament": "Активный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["long_fins"]
+  },
+  {
+    "id": 5,
+    "name_ru": "Гуппи",
+    "name_lat": "Poecilia reticulata",
+    "type": "freshwater",
+    "family_group": "Живородящие",
+    "size_cm": 5,
+    "min_tank_liters": 30,
+    "bio_load_points": 3,
+    "temperament": "Мирный",
+    "min_group_size": 3,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 7.0,
+      "ph_max": 8.0,
+      "temp_min": 22,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["fin_nipper", "large_predator", "soft_acid_water"]
+  },
+  {
+    "id": 6,
+    "name_ru": "Моллинезия Черная",
+    "name_lat": "Poecilia sphenops",
+    "type": "freshwater",
+    "family_group": "Живородящие",
+    "size_cm": 10,
+    "min_tank_liters": 60,
+    "bio_load_points": 5,
+    "temperament": "Мирный",
+    "min_group_size": 3,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 7.0,
+      "ph_max": 8.0,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["soft_acid_water"]
+  },
+  {
+    "id": 7,
+    "name_ru": "Меченосец",
+    "name_lat": "Xiphophorus hellerii",
+    "type": "freshwater",
+    "family_group": "Живородящие",
+    "size_cm": 12,
+    "min_tank_liters": 80,
+    "bio_load_points": 7,
+    "temperament": "Мирный",
+    "min_group_size": 3,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 7.0,
+      "ph_max": 8.0,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["soft_acid_water"]
+  },
+  {
+    "id": 8,
+    "name_ru": "Данио Рерио",
+    "name_lat": "Danio rerio",
+    "type": "freshwater",
+    "family_group": "Карповые",
+    "size_cm": 5,
+    "min_tank_liters": 40,
+    "bio_load_points": 2,
+    "temperament": "Активный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.5,
+      "ph_max": 7.5,
+      "temp_min": 18,
+      "temp_max": 24
+    },
+    "incompatible_tags": ["slow_moving", "high_temp_fish"]
+  },
+  {
+    "id": 9,
+    "name_ru": "Барбус Суматранский",
+    "name_lat": "Puntigrus tetrazona",
+    "type": "freshwater",
+    "family_group": "Карповые",
+    "size_cm": 7,
+    "min_tank_liters": 70,
+    "bio_load_points": 4,
+    "temperament": "Задира",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["long_fins", "slow_moving", "betta", "angelfish"]
+  },
+  {
+    "id": 10,
+    "name_ru": "Барбус Вишневый",
+    "name_lat": "Puntius titteya",
+    "type": "freshwater",
+    "family_group": "Карповые",
+    "size_cm": 5,
+    "min_tank_liters": 50,
+    "bio_load_points": 3,
+    "temperament": "Мирный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["aggressive_cichlid"]
+  },
+  {
+    "id": 11,
+    "name_ru": "Расбора Клинопятнистая",
+    "name_lat": "Trigonostigma heteromorpha",
+    "type": "freshwater",
+    "family_group": "Карповые",
+    "size_cm": 4,
+    "min_tank_liters": 50,
+    "bio_load_points": 2,
+    "temperament": "Мирный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.0,
+      "temp_min": 23,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["large_predator"]
+  },
+  {
+    "id": 12,
+    "name_ru": "Золотая Рыбка (Короткотелая)",
+    "name_lat": "Carassius auratus",
+    "type": "freshwater",
+    "family_group": "Золотые",
+    "size_cm": 20,
+    "min_tank_liters": 100,
+    "bio_load_points": 15,
+    "temperament": "Мирный",
+    "min_group_size": 1,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 6.5,
+      "ph_max": 8.0,
+      "temp_min": 18,
+      "temp_max": 23
+    },
+    "incompatible_tags": ["high_temp_fish", "planted_tank_incompatible"]
+  },
+  {
+    "id": 13,
+    "name_ru": "Петушок (Самец)",
+    "name_lat": "Betta splendens",
+    "type": "freshwater",
+    "family_group": "Лабиринтовые",
+    "size_cm": 6,
+    "min_tank_liters": 20,
+    "bio_load_points": 3,
+    "temperament": "Агрессивный_к_своим",
+    "min_group_size": 1,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["male_betta", "fin_nipper", "long_fins"]
+  },
+  {
+    "id": 14,
+    "name_ru": "Гурами Мраморный",
+    "name_lat": "Trichopodus trichopterus",
+    "type": "freshwater",
+    "family_group": "Лабиринтовые",
+    "size_cm": 12,
+    "min_tank_liters": 80,
+    "bio_load_points": 6,
+    "temperament": "Мирный",
+    "min_group_size": 1,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["aggressive_cichlid"]
+  },
+  {
+    "id": 15,
+    "name_ru": "Гурами Жемчужный",
+    "name_lat": "Trichopodus leerii",
+    "type": "freshwater",
+    "family_group": "Лабиринтовые",
+    "size_cm": 12,
+    "min_tank_liters": 100,
+    "bio_load_points": 6,
+    "temperament": "Мирный",
+    "min_group_size": 1,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["aggressive_cichlid"]
+  },
+  {
+    "id": 16,
+    "name_ru": "Скалярия",
+    "name_lat": "Pterophyllum scalare",
+    "type": "freshwater",
+    "family_group": "Цихлиды_Америка",
+    "size_cm": 15,
+    "min_tank_liters": 100,
+    "bio_load_points": 8,
+    "temperament": "Полуагрессивный",
+    "min_group_size": 2,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.0,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["small_fish_prey", "fin_nipper"]
+  },
+  {
+    "id": 17,
+    "name_ru": "Дискус",
+    "name_lat": "Symphysodon aequifasciatus",
+    "type": "freshwater",
+    "family_group": "Цихлиды_Америка",
+    "size_cm": 20,
+    "min_tank_liters": 200,
+    "bio_load_points": 12,
+    "temperament": "Прихотливый",
+    "min_group_size": 5,
+    "difficulty": 3,
+    "water_params": {
+      "ph_min": 5.5,
+      "ph_max": 6.5,
+      "temp_min": 28,
+      "temp_max": 31
+    },
+    "incompatible_tags": ["high_ph_water", "low_temp_fish"]
+  },
+  {
+    "id": 18,
+    "name_ru": "Апистограмма Рамирези",
+    "name_lat": "Mikrogeophagus ramirezi",
+    "type": "freshwater",
+    "family_group": "Цихлиды_Карликовые",
+    "size_cm": 6,
+    "min_tank_liters": 50,
+    "bio_load_points": 4,
+    "temperament": "Мирный",
+    "min_group_size": 2,
+    "difficulty": 3,
+    "water_params": {
+      "ph_min": 5.5,
+      "ph_max": 7.0,
+      "temp_min": 26,
+      "temp_max": 30
+    },
+    "incompatible_tags": ["high_ph_water"]
+  },
+  {
+    "id": 19,
+    "name_ru": "Цихлазома Чернополосая",
+    "name_lat": "Amatitlania nigrofasciata",
+    "type": "freshwater",
+    "family_group": "Цихлиды_Америка",
+    "size_cm": 15,
+    "min_tank_liters": 100,
+    "bio_load_points": 9,
+    "temperament": "Территориальный",
+    "min_group_size": 2,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 7.0,
+      "ph_max": 8.0,
+      "temp_min": 22,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["small_fish_prey", "planted_tank_incompatible"]
+  },
+  {
+    "id": 20,
+    "name_ru": "Астронотус",
+    "name_lat": "Astronotus ocellatus",
+    "type": "freshwater",
+    "family_group": "Цихлиды_Хищники",
+    "size_cm": 35,
+    "min_tank_liters": 250,
+    "bio_load_points": 30,
+    "temperament": "Хищник",
+    "min_group_size": 1,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["small_fish_prey", "planted_tank_incompatible"]
+  },
+  {
+    "id": 21,
+    "name_ru": "Еллоу (Малави)",
+    "name_lat": "Labidochromis caeruleus",
+    "type": "freshwater",
+    "family_group": "Цихлиды_Малави",
+    "size_cm": 10,
+    "min_tank_liters": 120,
+    "bio_load_points": 7,
+    "temperament": "Территориальный",
+    "min_group_size": 4,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 7.5,
+      "ph_max": 8.5,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["soft_acid_water", "planted_tank_incompatible"]
+  },
+  {
+    "id": 22,
+    "name_ru": "Псевдотрофеус Демасони",
+    "name_lat": "Chindongo demasoni",
+    "type": "freshwater",
+    "family_group": "Цихлиды_Малави",
+    "size_cm": 8,
+    "min_tank_liters": 150,
+    "bio_load_points": 6,
+    "temperament": "Агрессивный",
+    "min_group_size": 10,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 7.5,
+      "ph_max": 8.5,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["soft_acid_water", "community_fish"]
+  },
+  {
+    "id": 23,
+    "name_ru": "Коридорас Панда",
+    "name_lat": "Corydoras panda",
+    "type": "freshwater",
+    "family_group": "Сомы",
+    "size_cm": 5,
+    "min_tank_liters": 40,
+    "bio_load_points": 3,
+    "temperament": "Мирный",
+    "min_group_size": 5,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": []
+  },
+  {
+    "id": 24,
+    "name_ru": "Анциструс (Прилипала)",
+    "name_lat": "Ancistrus dolichopterus",
+    "type": "freshwater",
+    "family_group": "Сомы",
+    "size_cm": 12,
+    "min_tank_liters": 80,
+    "bio_load_points": 7,
+    "temperament": "Мирный",
+    "min_group_size": 1,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["aggressive_cichlid_territory"]
+  },
+  {
+    "id": 25,
+    "name_ru": "Птеригоплихт (Парчовый)",
+    "name_lat": "Pterygoplichthys gibbiceps",
+    "type": "freshwater",
+    "family_group": "Сомы",
+    "size_cm": 40,
+    "min_tank_liters": 300,
+    "bio_load_points": 25,
+    "temperament": "Мирный",
+    "min_group_size": 1,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 6.5,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["small_aquarium", "wood_required"]
+  },
+  {
+    "id": 26,
+    "name_ru": "Боция Клоун",
+    "name_lat": "Chromobotia macracanthus",
+    "type": "freshwater",
+    "family_group": "Вьюновые",
+    "size_cm": 25,
+    "min_tank_liters": 250,
+    "bio_load_points": 10,
+    "temperament": "Мирный",
+    "min_group_size": 5,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.0,
+      "temp_min": 25,
+      "temp_max": 30
+    },
+    "incompatible_tags": ["snail_eater"]
+  },
+  {
+    "id": 27,
+    "name_ru": "Акантофтальмус Кюля",
+    "name_lat": "Pangio kuhlii",
+    "type": "freshwater",
+    "family_group": "Вьюновые",
+    "size_cm": 10,
+    "min_tank_liters": 60,
+    "bio_load_points": 4,
+    "temperament": "Мирный",
+    "min_group_size": 3,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.0,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["sharp_substrate"]
+  },
+  {
+    "id": 28,
+    "name_ru": "Креветка Вишня",
+    "name_lat": "Neocaridina davidi",
+    "type": "freshwater",
+    "family_group": "Беспозвоночные",
+    "size_cm": 3,
+    "min_tank_liters": 10,
+    "bio_load_points": 1,
+    "temperament": "Мирный",
+    "min_group_size": 5,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.5,
+      "ph_max": 7.5,
+      "temp_min": 20,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["predator_fish"]
+  },
+  {
+    "id": 29,
+    "name_ru": "Улитка Ампулярия",
+    "name_lat": "Pomacea bridgesii",
+    "type": "freshwater",
+    "family_group": "Беспозвоночные",
+    "size_cm": 5,
+    "min_tank_liters": 20,
+    "bio_load_points": 3,
+    "temperament": "Мирный",
+    "min_group_size": 1,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.5,
+      "ph_max": 8.0,
+      "temp_min": 20,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["snail_eater"]
+  },
+  {
+    "id": 30,
+    "name_ru": "Тетра Черная (Черный Неон)",
+    "name_lat": "Hyphessobrycon herbertaxelrodi",
+    "type": "freshwater",
+    "family_group": "Харациновые",
+    "size_cm": 4,
+    "min_tank_liters": 50,
+    "bio_load_points": 2,
+    "temperament": "Мирный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["large_predator"]
+  },
+  {
+    "id": 31,
+    "name_ru": "Тетра Королевская",
+    "name_lat": "Inpaichthys kerri",
+    "type": "freshwater",
+    "family_group": "Харациновые",
+    "size_cm": 5,
+    "min_tank_liters": 60,
+    "bio_load_points": 3,
+    "temperament": "Мирный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 23,
+      "temp_max": 27
+    },
+    "incompatible_tags": ["large_predator"]
+  },
+  {
+    "id": 32,
+    "name_ru": "Наннакара Неоновая",
+    "name_lat": "Nannacara anomala",
+    "type": "freshwater",
+    "family_group": "Цихлиды_Карликовые",
+    "size_cm": 8,
+    "min_tank_liters": 70,
+    "bio_load_points": 5,
+    "temperament": "Полуагрессивный",
+    "min_group_size": 2,
+    "difficulty": 2,
+    "water_params": {
+      "ph_min": 6.5,
+      "ph_max": 7.5,
+      "temp_min": 24,
+      "temp_max": 27
+    },
+    "incompatible_tags": ["small_shrimp"]
+  },
+  {
+    "id": 33,
+    "name_ru": "Акантодорас Сетчатый",
+    "name_lat": "Acanthodoras cataphractus",
+    "type": "freshwater",
+    "family_group": "Сомы",
+    "size_cm": 15,
+    "min_tank_liters": 100,
+    "bio_load_points": 8,
+    "temperament": "Мирный",
+    "min_group_size": 1,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 6.0,
+      "ph_max": 7.5,
+      "temp_min": 24,
+      "temp_max": 28
+    },
+    "incompatible_tags": ["small_catfish"]
+  },
+  {
+    "id": 34,
+    "name_ru": "Пецилия",
+    "name_lat": "Xiphophorus maculatus",
+    "type": "freshwater",
+    "family_group": "Живородящие",
+    "size_cm": 5,
+    "min_tank_liters": 40,
+    "bio_load_points": 3,
+    "temperament": "Мирный",
+    "min_group_size": 3,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 7.0,
+      "ph_max": 8.0,
+      "temp_min": 22,
+      "temp_max": 26
+    },
+    "incompatible_tags": ["soft_acid_water"]
+  },
+  {
+    "id": 35,
+    "name_ru": "Радужница Боэсмана",
+    "name_lat": "Melanotaenia boesemani",
+    "type": "freshwater",
+    "family_group": "Радужницы",
+    "size_cm": 12,
+    "min_tank_liters": 150,
+    "bio_load_points": 7,
+    "temperament": "Активный",
+    "min_group_size": 6,
+    "difficulty": 1,
+    "water_params": {
+      "ph_min": 7.0,
+      "ph_max": 8.0,
+      "temp_min": 25,
+      "temp_max": 30
+    },
+    "incompatible_tags": ["slow_moving", "high_temp_fish"]
+  }
+]
+

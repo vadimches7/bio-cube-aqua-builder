@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Fish, AquariumConfig } from '@/types/aquarium';
 import { Button } from '@/components/ui/button';
-import { X, Plus, Minus, AlertTriangle, Info, Droplets, Users } from 'lucide-react';
+import { X, Plus, Minus, AlertTriangle, Info, Droplets, Users, Ruler, Fish as FishIcon } from 'lucide-react';
+import { WaterParamsVisualization } from './WaterParamsVisualization';
+import { formatWaterParams } from '@/utils/waterParamsChecker';
+import { getTagDescription } from '@/utils/compatibilityMatrix';
 
 interface FishModalProps {
   fish: Fish;
@@ -13,6 +16,7 @@ interface FishModalProps {
 
 export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
   const [count, setCount] = useState(fish.schooling ? (fish.minSchoolSize || 6) : 1);
+  const [imageError, setImageError] = useState(false);
 
   const existingCount = config.selectedFish.find(f => f.fish.id === fish.id)?.count || 0;
   const maxAllowed = Math.min(fish.maxCount - existingCount, Math.floor(config.volume / fish.minVolume));
@@ -33,25 +37,37 @@ export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="glass-card w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto relative"
+        className="glass-card w-full max-w-lg p-6 max-h-[95vh] relative flex flex-col"
       >
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-card/50 flex items-center justify-center hover:bg-card transition-colors"
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-card/50 flex items-center justify-center hover:bg-card transition-colors z-10"
           >
             <X className="w-4 h-4 text-muted-foreground" />
           </button>
 
+          {/* Scrollable content */}
+          <div className="flex-1 overflow-y-auto pr-2 -mr-2">
           {/* Fish image */}
-          <div className="aspect-video rounded-2xl mb-6 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center">
-            <motion.div
-              animate={{ x: [0, 20, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="text-6xl"
-            >
-              🐠
-            </motion.div>
+          <div className="aspect-video rounded-2xl mb-6 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center relative">
+            {!imageError ? (
+              <img
+                src={fish.image}
+                alt={fish.name}
+                className="w-full h-full object-cover"
+                onError={() => setImageError(true)}
+                loading="lazy"
+              />
+            ) : (
+              <motion.div
+                animate={{ x: [0, 20, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="text-6xl"
+              >
+                🐠
+              </motion.div>
+            )}
           </div>
 
           {/* Fish info */}
@@ -76,6 +92,24 @@ export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
               <div className="text-xs text-muted-foreground mb-1">Уровень ухода</div>
               <span className="font-semibold text-foreground">{fish.careLevel}</span>
             </div>
+            {fish.sizeCm && (
+              <div className="p-3 rounded-xl bg-card/50">
+                <div className="text-xs text-muted-foreground mb-1">Размер</div>
+                <div className="flex items-center gap-2">
+                  <Ruler className="w-4 h-4 text-primary" />
+                  <span className="font-semibold text-foreground">до {fish.sizeCm} см</span>
+                </div>
+              </div>
+            )}
+            {fish.familyGroup && (
+              <div className="p-3 rounded-xl bg-card/50">
+                <div className="text-xs text-muted-foreground mb-1">Семейство</div>
+                <div className="flex items-center gap-2">
+                  <FishIcon className="w-4 h-4 text-primary" />
+                  <span className="font-semibold text-foreground text-sm">{fish.familyGroup}</span>
+                </div>
+              </div>
+            )}
             {fish.schooling && (
               <div className="p-3 rounded-xl bg-card/50 col-span-2">
                 <div className="flex items-center gap-2 text-accent">
@@ -85,6 +119,37 @@ export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
               </div>
             )}
           </div>
+
+          {/* Water Parameters */}
+          {fish.waterParams && (
+            <div className="mb-6 p-4 rounded-xl bg-primary/5 border border-primary/20">
+              <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Droplets className="w-4 h-4 text-primary" />
+                Параметры воды
+              </h4>
+              <WaterParamsVisualization params={fish.waterParams} />
+              <div className="mt-3 text-xs text-muted-foreground">
+                {formatWaterParams(fish.waterParams)}
+              </div>
+            </div>
+          )}
+
+          {/* Incompatible Tags */}
+          {fish.incompatibleTags && fish.incompatibleTags.length > 0 && (
+            <div className="mb-6">
+              <h4 className="text-sm font-semibold text-foreground mb-2">Особенности</h4>
+              <div className="flex flex-wrap gap-2">
+                {fish.incompatibleTags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="px-2 py-1 rounded-lg bg-card/50 text-xs text-muted-foreground border border-border/50"
+                  >
+                    {getTagDescription(tag)}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Warnings */}
           {incompatibleFish.length > 0 && (
@@ -136,9 +201,10 @@ export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
               </button>
             </div>
           </div>
+          </div>
 
-          {/* Actions */}
-          <div className="flex gap-3">
+          {/* Actions - Fixed at bottom */}
+          <div className="flex gap-3 pt-4 mt-4 border-t border-border/50 flex-shrink-0">
             <Button variant="glass" className="flex-1" onClick={onClose}>
               Отмена
             </Button>

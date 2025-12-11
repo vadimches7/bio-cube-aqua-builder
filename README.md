@@ -1,73 +1,126 @@
-# Welcome to your Lovable project
+# Bio-Cube Aquarium Builder
 
-## Project info
+Премиальный конфигуратор аквариумов для студии аквадизайна Bio-Cube. Веб-приложение позволяет пользователям создавать и настраивать идеальные аквариумы с подбором рыб, проверкой совместимости и визуализацией параметров воды.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🐠 Особенности
 
-## How can I edit this code?
+- **Интерактивный конфигуратор** - пошаговый процесс создания аквариума
+- **База данных рыб** - обширная коллекция пресноводных и морских видов
+- **Проверка совместимости** - автоматический анализ совместимости выбранных рыб
+- **Визуализация параметров** - наглядное отображение параметров воды (pH, температура, жесткость)
+- **Адаптивный дизайн** - работает на всех устройствах
+- **Современный UI** - красивый интерфейс с анимациями и переходами
 
-There are several ways of editing your application.
+## 🚀 Быстрый старт
 
-**Use Lovable**
+### Требования
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Node.js 18+ и npm
+- Git
 
-Changes made via Lovable will be committed automatically to this repo.
+### Установка
 
-**Use your preferred IDE**
+```bash
+# Клонируйте репозиторий
+git clone https://github.com/your-username/bio-cube-aqua-builder.git
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+# Перейдите в директорию проекта
+cd bio-cube-aqua-builder
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Установите зависимости
+npm install
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Запустите dev-сервер
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Приложение будет доступно по адресу `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Сборка для production
 
-**Use GitHub Codespaces**
+```bash
+# Создать production build
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Предпросмотр production build
+npm run preview
+```
 
-## What technologies are used for this project?
+Собранные файлы будут в папке `dist/`
 
-This project is built with:
+## 🛠 Технологии
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **React 18** - UI библиотека
+- **TypeScript** - типизация
+- **Vite** - сборщик и dev-сервер
+- **Tailwind CSS** - стилизация
+- **Framer Motion** - анимации
+- **shadcn/ui** - компоненты UI
+- **React Router** - маршрутизация
 
-## How can I deploy this project?
+## 📁 Структура проекта
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+```
+bio-cube-aqua-builder/
+├── src/
+│   ├── components/      # React компоненты
+│   │   ├── Configurator.tsx      # Главный конфигуратор
+│   │   ├── ConfiguratorStep1.tsx # Шаг 1: Параметры
+│   │   ├── ConfiguratorStep2.tsx # Шаг 2: Выбор рыб
+│   │   ├── ConfiguratorStep3.tsx # Шаг 3: Проект
+│   │   ├── FishCard.tsx          # Карточка рыбы
+│   │   ├── FishModal.tsx         # Модальное окно с деталями
+│   │   └── ui/                   # UI компоненты
+│   ├── data/            # База данных рыб
+│   ├── types/           # TypeScript типы
+│   ├── utils/           # Утилиты
+│   └── pages/           # Страницы
+├── public/              # Статические файлы
+└── scripts/             # Скрипты для парсинга данных
+```
 
-## Can I connect a custom domain to my Lovable project?
+## 🎨 Основные компоненты
 
-Yes, you can!
+### Configurator
+Главный компонент конфигуратора с тремя шагами:
+1. **Параметры аквариума** - объем, тип, уровень опыта
+2. **Выбор обитателей** - поиск и фильтрация рыб
+3. **Просмотр проекта** - итоговый проект с совместимостью
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### FishCard & FishModal
+Компоненты для отображения информации о рыбах с детальными параметрами.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### CompatibilityPanel
+Панель проверки совместимости выбранных рыб с предупреждениями и рекомендациями.
+
+## 📝 Скрипты
+
+```bash
+npm run dev          # Запуск dev-сервера
+npm run build        # Production сборка
+npm run preview      # Предпросмотр production build
+npm run lint         # Проверка кода
+npm run parse-fish   # Парсинг данных о рыбах (требует Python)
+```
+
+## 🌐 Деплой
+
+Проект можно задеплоить на любой статический хостинг:
+
+- **Vercel** - `vercel deploy`
+- **Netlify** - перетащите папку `dist` в Netlify
+- **GitHub Pages** - используйте GitHub Actions
+- **Любой другой статический хостинг**
+
+## 📄 Лицензия
+
+Этот проект создан для Bio-Cube. Все права защищены.
+
+## 👥 Авторы
+
+Bio-Cube Team
+
+## 🔗 Ссылки
+
+- [Bio-Cube](https://bio-cube.ru)
+- [Документация](https://github.com/your-username/bio-cube-aqua-builder/wiki)

@@ -8,7 +8,9 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "parse-fish": "cd scripts && python3 fanfishka_parser.py",
+    "parse-fish:install": "pip install -r scripts/requirements.txt"
   },
   "dependencies": {
     "@fontsource/manrope": "^5.2.8",

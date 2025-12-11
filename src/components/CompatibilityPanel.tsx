@@ -1,6 +1,7 @@
 import { AquariumConfig, CompatibilityStatus } from '@/types/aquarium';
 import { motion } from 'framer-motion';
-import { CheckCircle, AlertTriangle, XCircle, Trash2, Plus, Minus } from 'lucide-react';
+import { CheckCircle, AlertTriangle, XCircle, Trash2, Plus, Minus, Droplets, Thermometer } from 'lucide-react';
+import { checkWaterParamsCompatibility, formatWaterParams, getOptimalWaterParams } from '@/utils/waterParamsChecker';
 
 interface CompatibilityPanelProps {
   config: AquariumConfig;
@@ -37,9 +38,15 @@ export const CompatibilityPanel = ({ config, onUpdateCount, onRemove }: Compatib
     }
   });
 
+  // Check water parameters compatibility
+  const waterCompatibility = checkWaterParamsCompatibility(config.selectedFish);
+  const optimalWaterParams = getOptimalWaterParams(config.selectedFish);
+  const waterParamsWarnings = waterCompatibility.warnings;
+  const waterParamsConflicts = waterCompatibility.conflicts.map(c => c.issue);
+
   const getStatus = (): CompatibilityStatus => {
-    if (conflicts.length > 0) return 'incompatible';
-    if (volumePercentage > 80 || schoolingWarnings.length > 0) return 'risky';
+    if (conflicts.length > 0 || waterParamsConflicts.length > 0 || !waterCompatibility.isCompatible) return 'incompatible';
+    if (volumePercentage > 80 || schoolingWarnings.length > 0 || waterParamsWarnings.length > 0) return 'risky';
     if (volumePercentage > 60) return 'good';
     return 'excellent';
   };
@@ -110,6 +117,35 @@ export const CompatibilityPanel = ({ config, onUpdateCount, onRemove }: Compatib
         </div>
       </div>
 
+      {/* Optimal water parameters */}
+      {optimalWaterParams && (
+        <div className="mb-4 p-3 rounded-xl bg-primary/10 border border-primary/20">
+          <div className="flex items-center gap-2 mb-2">
+            <Droplets className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-foreground">Рекомендуемые параметры воды</span>
+          </div>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            {optimalWaterParams.phMin !== undefined && optimalWaterParams.phMax !== undefined && (
+              <div className="flex items-center gap-2">
+                <span>pH:</span>
+                <span className="font-medium text-foreground">
+                  {optimalWaterParams.phMin.toFixed(1)} - {optimalWaterParams.phMax.toFixed(1)}
+                </span>
+              </div>
+            )}
+            {optimalWaterParams.tempMin !== undefined && optimalWaterParams.tempMax !== undefined && (
+              <div className="flex items-center gap-2">
+                <Thermometer className="w-3 h-3" />
+                <span>Температура:</span>
+                <span className="font-medium text-foreground">
+                  {optimalWaterParams.tempMin} - {optimalWaterParams.tempMax}°C
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Selected fish list */}
       <div className="space-y-3 mb-4 max-h-[200px] overflow-y-auto scrollbar-hide">
         {config.selectedFish.map((sf) => (
@@ -149,12 +185,24 @@ export const CompatibilityPanel = ({ config, onUpdateCount, onRemove }: Compatib
       </div>
 
       {/* Warnings and conflicts */}
-      {(conflicts.length > 0 || schoolingWarnings.length > 0) && (
+      {(conflicts.length > 0 || schoolingWarnings.length > 0 || waterParamsWarnings.length > 0 || waterParamsConflicts.length > 0) && (
         <div className="space-y-2">
           {conflicts.map((conflict, i) => (
             <div key={i} className="flex items-start gap-2 p-2 rounded-lg bg-destructive/10 text-sm">
               <XCircle className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
               <span className="text-destructive">{conflict}</span>
+            </div>
+          ))}
+          {waterParamsConflicts.map((conflict, i) => (
+            <div key={`water-${i}`} className="flex items-start gap-2 p-2 rounded-lg bg-destructive/10 text-sm">
+              <XCircle className="w-4 h-4 text-destructive flex-shrink-0 mt-0.5" />
+              <span className="text-destructive">{conflict}</span>
+            </div>
+          ))}
+          {waterParamsWarnings.map((warning, i) => (
+            <div key={`water-warn-${i}`} className="flex items-start gap-2 p-2 rounded-lg bg-warning/10 text-sm">
+              <AlertTriangle className="w-4 h-4 text-warning flex-shrink-0 mt-0.5" />
+              <span className="text-warning">{warning}</span>
             </div>
           ))}
           {schoolingWarnings.map((warning, i) => (

@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { Fish } from '@/types/aquarium';
 import { motion } from 'framer-motion';
-import { Droplets, Users, Layers } from 'lucide-react';
+import { Droplets, Users } from 'lucide-react';
 
 interface FishCardProps {
   fish: Fish;
@@ -9,6 +10,8 @@ interface FishCardProps {
 }
 
 export const FishCard = ({ fish, selected, onClick }: FishCardProps) => {
+  const [imageError, setImageError] = useState(false);
+
   const getZoneIcon = () => {
     switch (fish.zone) {
       case 'top': return '↑';
@@ -37,15 +40,25 @@ export const FishCard = ({ fish, selected, onClick }: FishCardProps) => {
           : 'glass-card-hover'
       }`}
     >
-      {/* Fish image placeholder - in real app this would be actual image */}
-      <div className="aspect-[4/3] rounded-xl mb-3 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center">
-        <motion.div
-          animate={{ x: [0, 10, 0] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          className="text-4xl opacity-60"
-        >
-          🐠
-        </motion.div>
+      {/* Fish image */}
+      <div className="aspect-[4/3] rounded-xl mb-3 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center relative">
+        {!imageError ? (
+          <img
+            src={fish.image}
+            alt={fish.name}
+            className="w-full h-full object-cover"
+            onError={() => setImageError(true)}
+            loading="lazy"
+          />
+        ) : (
+          <motion.div
+            animate={{ x: [0, 10, 0] }}
+            transition={{ duration: 3, repeat: Infinity }}
+            className="text-4xl opacity-60"
+          >
+            🐠
+          </motion.div>
+        )}
       </div>
 
       <h4 className="font-semibold text-foreground mb-1 truncate">{fish.name}</h4>

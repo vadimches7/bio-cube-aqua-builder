@@ -1,0 +1,82 @@
+{
+  "total": 12,
+  "found": 7,
+  "not_found": [
+    {
+      "id": "cherry-shrimp",
+      "name": "Креветка Вишня",
+      "nameEn": "Cherry Shrimp"
+    },
+    {
+      "id": "amano-shrimp",
+      "name": "Креветка Амано",
+      "nameEn": "Amano Shrimp"
+    },
+    {
+      "id": "malawi-cichlid",
+      "name": "Цихлида Малави",
+      "nameEn": "Malawi Cichlid"
+    },
+    {
+      "id": "clownfish",
+      "name": "Рыба-клоун",
+      "nameEn": "Clownfish"
+    },
+    {
+      "id": "tang",
+      "name": "Хирург",
+      "nameEn": "Tang"
+    }
+  ],
+  "updates": [
+    {
+      "fishId": "neon-tetra",
+      "fishName": "Неон",
+      "catalogName": "Неон бриллиантовый или алмазный",
+      "hasImage": true,
+      "hasDescription": true
+    },
+    {
+      "fishId": "guppy",
+      "fishName": "Гуппи",
+      "catalogName": "Гуппи синие и голубые",
+      "hasImage": true,
+      "hasDescription": true
+    },
+    {
+      "fishId": "angelfish",
+      "fishName": "Скалярия",
+      "catalogName": "Скалярия зеленая",
+      "hasImage": true,
+      "hasDescription": true
+    },
+    {
+      "fishId": "corydoras",
+      "fishName": "Коридорас",
+      "catalogName": "Коридорас пятнистохвостый",
+      "hasImage": true,
+      "hasDescription": true
+    },
+    {
+      "fishId": "betta",
+      "fishName": "Петушок",
+      "catalogName": "Рыбка петушок",
+      "hasImage": true,
+      "hasDescription": true
+    },
+    {
+      "fishId": "discus",
+      "fishName": "Дискус",
+      "catalogName": "Дискус коричневый",
+      "hasImage": true,
+      "hasDescription": true
+    },
+    {
+      "fishId": "pleco",
+      "fishName": "Плекостомус",
+      "catalogName": "Хемианциструс субвиридис",
+      "hasImage": true,
+      "hasDescription": true
+    }
+  ]
+}
