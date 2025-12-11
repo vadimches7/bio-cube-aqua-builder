@@ -1,0 +1,41 @@
+ID;Русское название;Латинское название;Тип;Размер (см);Семейство;Имя файла изображения;Есть изображение
+1;Неон Голубой;Paracheirodon innesi;Пресноводная;4;Харациновые;paracheirodon_innesi.png;Нет
+2;Неон Красный;Paracheirodon axelrodi;Пресноводная;5;Харациновые;paracheirodon_axelrodi.png;Нет
+3;Тетра Конго;Phenacogrammus interruptus;Пресноводная;9;Харациновые;phenacogrammus_interruptus.png;Нет
+4;Тернеция (Глофиш);Gymnocorymbus ternetzi;Пресноводная;6;Харациновые;gymnocorymbus_ternetzi.png;Нет
+5;Гуппи;Poecilia reticulata;Пресноводная;5;Живородящие;poecilia_reticulata.png;Нет
+6;Моллинезия Черная;Poecilia sphenops;Пресноводная;10;Живородящие;poecilia_sphenops.png;Нет
+7;Меченосец;Xiphophorus hellerii;Пресноводная;12;Живородящие;xiphophorus_hellerii.png;Нет
+8;Данио Рерио;Danio rerio;Пресноводная;5;Карповые;danio_rerio.png;Нет
+9;Барбус Суматранский;Puntigrus tetrazona;Пресноводная;7;Карповые;puntigrus_tetrazona.png;Нет
+10;Барбус Вишневый;Puntius titteya;Пресноводная;5;Карповые;puntius_titteya.png;Нет
+11;Расбора Клинопятнистая;Trigonostigma heteromorpha;Пресноводная;4;Карповые;trigonostigma_heteromorpha.png;Нет
+12;Золотая Рыбка (Короткотелая);Carassius auratus;Пресноводная;20;Золотые;carassius_auratus.png;Нет
+13;Петушок (Самец);Betta splendens;Пресноводная;6;Лабиринтовые;betta_splendens.png;Нет
+14;Гурами Мраморный;Trichopodus trichopterus;Пресноводная;12;Лабиринтовые;trichopodus_trichopterus.png;Нет
+15;Гурами Жемчужный;Trichopodus leerii;Пресноводная;12;Лабиринтовые;trichopodus_leerii.png;Нет
+16;Скалярия;Pterophyllum scalare;Пресноводная;15;Цихлиды_Америка;pterophyllum_scalare.png;Нет
+17;Дискус;Symphysodon aequifasciatus;Пресноводная;20;Цихлиды_Америка;symphysodon_aequifasciatus.png;Нет
+18;Апистограмма Рамирези;Mikrogeophagus ramirezi;Пресноводная;6;Цихлиды_Карликовые;mikrogeophagus_ramirezi.png;Нет
+19;Цихлазома Чернополосая;Amatitlania nigrofasciata;Пресноводная;15;Цихлиды_Америка;amatitlania_nigrofasciata.png;Нет
+20;Астронотус;Astronotus ocellatus;Пресноводная;35;Цихлиды_Хищники;astronotus_ocellatus.png;Нет
+21;Еллоу (Малави);Labidochromis caeruleus;Пресноводная;10;Цихлиды_Малави;labidochromis_caeruleus.png;Нет
+22;Псевдотрофеус Демасони;Chindongo demasoni;Пресноводная;8;Цихлиды_Малави;chindongo_demasoni.png;Нет
+23;Коридорас Панда;Corydoras panda;Пресноводная;5;Сомы;corydoras_panda.png;Нет
+24;Анциструс (Прилипала);Ancistrus dolichopterus;Пресноводная;12;Сомы;ancistrus_dolichopterus.png;Нет
+25;Птеригоплихт (Парчовый);Pterygoplichthys gibbiceps;Пресноводная;40;Сомы;pterygoplichthys_gibbiceps.png;Нет
+26;Боция Клоун;Chromobotia macracanthus;Пресноводная;25;Вьюновые;chromobotia_macracanthus.png;Нет
+27;Акантофтальмус Кюля;Pangio kuhlii;Пресноводная;10;Вьюновые;pangio_kuhlii.png;Нет
+28;Креветка Вишня;Neocaridina davidi;Пресноводная;3;Беспозвоночные;neocaridina_davidi.png;Нет
+29;Улитка Ампулярия;Pomacea bridgesii;Пресноводная;5;Беспозвоночные;pomacea_bridgesii.png;Нет
+30;Тетра Черная (Черный Неон);Hyphessobrycon herbertaxelrodi;Пресноводная;4;Харациновые;hyphessobrycon_herbertaxelrodi.png;Нет
+31;Тетра Королевская;Inpaichthys kerri;Пресноводная;5;Харациновые;inpaichthys_kerri.png;Нет
+32;Наннакара Неоновая;Nannacara anomala;Пресноводная;8;Цихлиды_Карликовые;nannacara_anomala.png;Нет
+33;Акантодорас Сетчатый;Acanthodoras cataphractus;Пресноводная;15;Сомы;acanthodoras_cataphractus.png;Нет
+34;Пецилия;Xiphophorus maculatus;Пресноводная;5;Живородящие;xiphophorus_maculatus.png;Нет
+35;Радужница Боэсмана;Melanotaenia boesemani;Пресноводная;12;Радужницы;melanotaenia_boesemani.png;Нет
+101;Клоун Оцеллярис;Amphiprion ocellaris;Морская;8;Клоуны;amphiprion_ocellaris.png;Да
+105;Хирург Голубой (Дори);Paracanthurus hepatus;Морская;25;Хирурги;paracanthurus_hepatus.png;Да
+107;Мандаринка Глянцевая;Synchiropus splendidus;Морская;7;Лировые;synchiropus_splendidus.png;Да
+113;Центропиг Огненный;Centropyge loricula;Морская;10;Ангелы_Карликовые;centropyge_loricula.png;Да
+115;Крылатка-Зебра;Pterois volitans;Морская;35;Скорпеновые;pterois_volitans.png;Да

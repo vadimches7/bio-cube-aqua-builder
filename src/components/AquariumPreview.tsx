@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AquariumConfig, AQUARIUM_TYPES } from '@/types/aquarium';
 
@@ -6,6 +7,7 @@ interface AquariumPreviewProps {
 }
 
 export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
   const typeInfo = AQUARIUM_TYPES.find(t => t.id === config.type);
   
   // Calculate fill level based on selected fish
@@ -20,6 +22,12 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
     if (fillPercentage > 80) return 'from-destructive/40 via-destructive/25 to-destructive/15';
     if (fillPercentage > 60) return 'from-warning/35 via-warning/20 to-warning/10';
     return 'from-primary/35 via-primary/20 to-accent/15';
+  };
+
+  const getFishHue = (temperament: string) => {
+    if (temperament === 'aggressive') return 'from-[#ff6b6b] via-[#ff9f43] to-[#ffd166]';
+    if (temperament === 'semi-aggressive') return 'from-[#5ad8ff] via-[#7cf3c8] to-[#a0f0ff]';
+    return 'from-[#6ee7b7] via-[#4ade80] to-[#34d399]';
   };
 
   return (
@@ -62,6 +70,12 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
           <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/15 to-transparent" />
           {/* Caustics */}
           <div className="absolute inset-0 mix-blend-screen opacity-30 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_30%),radial-gradient(circle_at_70%_10%,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_40%_70%,rgba(255,255,255,0.08),transparent_26%)] animate-pulse" />
+          {/* Soft wave */}
+          <motion.div
+            className="absolute top-0 left-0 right-0 h-8 bg-[radial-gradient(circle_at_10%_20%,rgba(255,255,255,0.18),transparent_45%),radial-gradient(circle_at_70%_40%,rgba(255,255,255,0.12),transparent_40%)] opacity-50"
+            animate={{ x: ['0%', '6%', '-4%', '0%'] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          />
         </motion.div>
         
         {/* Light rays */}
@@ -72,32 +86,91 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.25)_90%)] pointer-events-none" />
 
         {/* Animated fish */}
-        {config.selectedFish.slice(0, 8).map((sf, index) => (
-          <motion.div
-            key={sf.fish.id}
-            className="absolute"
-            style={{
-              top: sf.fish.zone === 'top' ? '18%' : sf.fish.zone === 'bottom' ? '68%' : '42%',
-            }}
-            animate={{
-              x: ['0%', `${150 + index * 30}%`, '0%'],
-              y: [0, index % 2 === 0 ? 10 : -10, 0],
-            }}
-            transition={{
-              duration: 6 + index,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: index * 0.3,
-            }}
-          >
-            <div 
-              className="w-7 h-3.5 rounded-full bg-gradient-to-r from-primary/70 via-primary/50 to-accent/40 shadow-[0_0_12px_-4px_rgba(45,255,200,0.8)]"
+        {config.selectedFish.slice(0, 8).map((sf, index) => {
+          const zoneTop = sf.fish.zone === 'top' ? '18%' : sf.fish.zone === 'bottom' ? '70%' : '44%';
+          const scale = Math.min(1.4, 0.8 + sf.count * 0.12);
+          const fishSize = Math.min(80, 40 + sf.count * 8);
+          const hasImageError = imageErrors.has(sf.fish.id);
+          // Распределяем рыб по горизонтали, но они остаются на месте
+          const leftPosition = `${15 + (index % 4) * 25}%`;
+          
+          return (
+            <motion.div
+              key={sf.fish.id}
+              className="absolute"
               style={{
-                transform: `scale(${0.8 + (sf.count * 0.1)})`,
+                top: zoneTop,
+                left: leftPosition,
               }}
-            />
-          </motion.div>
-        ))}
+              animate={{
+                y: [0, index % 2 === 0 ? 8 : -8, 0],
+                x: [0, index % 3 === 0 ? 3 : -3, 0],
+              }}
+              transition={{
+                duration: 3 + index * 0.3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: index * 0.2,
+              }}
+            >
+              <div
+                className="relative"
+                style={{ transform: `scale(${scale})` }}
+              >
+                {!hasImageError ? (
+                  <>
+                    {/* Fish image */}
+                    <img
+                      src={sf.fish.image}
+                      alt={sf.fish.name}
+                      className="w-auto h-auto object-contain"
+                      style={{
+                        width: `${fishSize}px`,
+                        height: 'auto',
+                        filter: 'drop-shadow(0 0 8px rgba(53, 255, 200, 0.6)) brightness(1.1)',
+                        imageRendering: 'auto',
+                      }}
+                      onError={() => {
+                        setImageErrors(prev => new Set(prev).add(sf.fish.id));
+                      }}
+                    />
+                    {/* bubble trail */}
+                    <motion.div
+                      className="absolute left-[-6px] top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white/40"
+                      animate={{ y: [0, -10], opacity: [0.8, 0] }}
+                      transition={{ duration: 1.4, repeat: Infinity, delay: 0.2 }}
+                    />
+                  </>
+                ) : (
+                  <>
+                    {/* Fallback abstract fish */}
+                    <div
+                      className="relative"
+                      style={{ width: `${fishSize}px`, height: `${fishSize * 0.4}px` }}
+                    >
+                      {/* body */}
+                      <div
+                        className={`w-full h-full rounded-full bg-gradient-to-r ${getFishHue(sf.fish.temperament)} shadow-[0_0_14px_-6px_rgba(53,255,200,0.8)]`}
+                      />
+                      {/* tail */}
+                      <div
+                        className="absolute right-[-6px] top-1/2 -translate-y-1/2 h-2 w-3 bg-gradient-to-r from-white/60 to-white/10 rounded-sm skew-x-6"
+                      />
+                      {/* eye */}
+                      <div className="absolute left-1 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-white/90 shadow-[0_0_6px_rgba(255,255,255,0.6)]" />
+                    </div>
+                    {/* bubble trail */}
+                    <motion.div
+                      className="absolute left-[-6px] top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white/40"
+                      animate={{ y: [0, -10], opacity: [0.8, 0] }}
+                      transition={{ duration: 1.4, repeat: Infinity, delay: 0.2 }}
+                    />
+                  </>
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
         
         {/* Bubbles */}
         {[...Array(6)].map((_, i) => (

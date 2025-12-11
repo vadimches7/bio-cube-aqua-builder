@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AquariumConfig, AQUARIUM_TYPES, INTERIOR_STYLES } from '@/types/aquarium';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Send, Filter, Thermometer, Sun, Droplets, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Send, Filter, Thermometer, Sun, Droplets, CheckCircle, Download } from 'lucide-react';
 import { toast } from 'sonner';
+import { exportToJSON, exportToText, exportToPDF } from '@/utils/exportConfig';
 
 interface ConfiguratorStep3Props {
   config: AquariumConfig;
@@ -200,21 +201,65 @@ export const ConfiguratorStep3 = ({ config, onBack }: ConfiguratorStep3Props) =>
             placeholder="Дополнительные пожелания"
           />
         </div>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Button type="button" variant="glass" onClick={onBack}>
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Изменить
-          </Button>
-          <Button type="submit" variant="premium" size="lg" className="flex-1" disabled={isSubmitting}>
-            {isSubmitting ? (
-              'Отправка...'
-            ) : (
-              <>
-                <Send className="w-5 h-5 mr-2" />
-                Получить расчёт от Bio-Cube
-              </>
-            )}
-          </Button>
+        <div className="flex flex-col gap-4">
+          {/* Export buttons */}
+          <div className="flex flex-wrap gap-2 p-4 rounded-xl bg-card/30 border border-border/50">
+            <span className="text-sm text-muted-foreground w-full mb-2">Экспорт конфигурации:</span>
+            <Button
+              type="button"
+              variant="glass"
+              size="sm"
+              onClick={() => {
+                exportToJSON(config);
+                toast.success('Конфигурация экспортирована в JSON');
+              }}
+            >
+              <Download className="w-4 h-4 mr-2" />
+              JSON
+            </Button>
+            <Button
+              type="button"
+              variant="glass"
+              size="sm"
+              onClick={() => {
+                exportToText(config);
+                toast.success('Конфигурация экспортирована в текстовый файл');
+              }}
+            >
+              <Download className="w-4 h-4 mr-2" />
+              TXT
+            </Button>
+            <Button
+              type="button"
+              variant="glass"
+              size="sm"
+              onClick={() => {
+                exportToPDF(config);
+                toast.success('Открыт диалог печати для сохранения в PDF');
+              }}
+            >
+              <Download className="w-4 h-4 mr-2" />
+              PDF
+            </Button>
+          </div>
+          
+          {/* Submit buttons */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button type="button" variant="glass" onClick={onBack}>
+              <ArrowLeft className="w-5 h-5 mr-2" />
+              Изменить
+            </Button>
+            <Button type="submit" variant="premium" size="lg" className="flex-1" disabled={isSubmitting}>
+              {isSubmitting ? (
+                'Отправка...'
+              ) : (
+                <>
+                  <Send className="w-5 h-5 mr-2" />
+                  Получить расчёт от Bio-Cube
+                </>
+              )}
+            </Button>
+          </div>
         </div>
       </form>
     </div>

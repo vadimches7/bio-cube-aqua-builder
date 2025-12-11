@@ -11,7 +11,7 @@ export const Configurator = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [config, setConfig] = useState<AquariumConfig>({
     type: 'freshwater',
-    volume: 100,
+    volume: 300,
     experienceLevel: 'beginner',
     interiorStyle: 'minimalism',
     selectedFish: [],

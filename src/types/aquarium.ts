@@ -40,6 +40,7 @@ export interface Fish {
   sizeCm?: number; // Размер рыбы в см
   familyGroup?: string; // Семейство
   incompatibleTags?: string[]; // Теги несовместимости
+  funFacts?: string[]; // Уникальные особенности/факты
 }
 
 export interface SelectedFish {

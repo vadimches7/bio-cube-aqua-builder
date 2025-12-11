@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { AquariumConfig, SelectedFish, Fish } from '@/types/aquarium';
 import { getFishByType } from '@/data/fishDatabase';
+import { getTagDescription } from '@/utils/compatibilityMatrix';
 import { Button } from '@/components/ui/button';
 import { FishCard } from './FishCard';
 import { FishModal } from './FishModal';
-import { ArrowLeft, ArrowRight, Search, Filter } from 'lucide-react';
+import { WaterParamsFilter } from './WaterParamsFilter';
+import { FamilyRecommendations } from './FamilyRecommendations';
+import { ArrowLeft, ArrowRight, Search, X } from 'lucide-react';
 
 interface ConfiguratorStep2Props {
   config: AquariumConfig;
@@ -17,17 +20,118 @@ export const ConfiguratorStep2 = ({ config, onAddFish, onBack, onNext }: Configu
   const [selectedFish, setSelectedFish] = useState<Fish | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [zoneFilter, setZoneFilter] = useState<string>('all');
+  const [catalogType, setCatalogType] = useState(config.type);
+  const [phMinFilter, setPhMinFilter] = useState<number | undefined>(undefined);
+  const [phMaxFilter, setPhMaxFilter] = useState<number | undefined>(undefined);
+  const [tempMinFilter, setTempMinFilter] = useState<number | undefined>(undefined);
+  const [tempMaxFilter, setTempMaxFilter] = useState<number | undefined>(undefined);
 
-  const availableFish = getFishByType(config.type);
+  const availableFish = getFishByType(catalogType);
   
   const filteredFish = availableFish.filter(fish => {
-    const matchesSearch = fish.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         fish.nameEn.toLowerCase().includes(searchQuery.toLowerCase());
+    // Расширенный поиск
+    let matchesSearch = true;
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      const searchInName = fish.name.toLowerCase().includes(query) ||
+                         fish.nameEn.toLowerCase().includes(query);
+      const searchInDescription = fish.description?.toLowerCase().includes(query) || false;
+      const searchInFamily = fish.familyGroup?.toLowerCase().includes(query) || false;
+      
+      // Поиск по тегам
+      const searchInTags = fish.incompatibleTags?.some(tag => {
+        const tagDescription = getTagDescription(tag).toLowerCase();
+        return tagDescription.includes(query) || tag.toLowerCase().includes(query);
+      }) || false;
+      
+      // Поиск по темпераменту
+      const temperamentMap: Record<string, string[]> = {
+        'мирная': ['peaceful'],
+        'мирная рыба': ['peaceful'],
+        'агрессивная': ['aggressive', 'semi-aggressive'],
+        'агрессивная рыба': ['aggressive', 'semi-aggressive'],
+        'полуагрессивная': ['semi-aggressive'],
+        'стайная': ['schooling'],
+        'стайная рыба': ['schooling'],
+        'хищник': ['predator', 'large_predator'],
+        'хищная': ['predator', 'large_predator'],
+      };
+      const searchInTemperament = Object.entries(temperamentMap).some(([key, values]) => {
+        if (query.includes(key)) {
+          return values.includes(fish.temperament) || 
+                 (fish.schooling && values.includes('schooling')) ||
+                 (fish.incompatibleTags?.some(tag => values.includes(tag)));
+        }
+        return false;
+      });
+      
+      // Поиск по зоне
+      const zoneMap: Record<string, string> = {
+        'верх': 'top',
+        'верхний': 'top',
+        'середина': 'middle',
+        'средний': 'middle',
+        'дно': 'bottom',
+        'нижний': 'bottom',
+      };
+      const searchInZone = Object.entries(zoneMap).some(([key, zone]) => {
+        return query.includes(key) && fish.zone === zone;
+      });
+      
+      matchesSearch = searchInName || searchInDescription || searchInFamily || 
+                     searchInTags || searchInTemperament || searchInZone;
+    }
+    
     const matchesZone = zoneFilter === 'all' || fish.zone === zoneFilter;
-    const matchesLevel = config.experienceLevel === 'advanced' || 
-                        (config.experienceLevel === 'intermediate' && fish.difficulty !== 'advanced') ||
-                        (config.experienceLevel === 'beginner' && fish.difficulty === 'beginner');
-    return matchesSearch && matchesZone && matchesLevel;
+    // Фильтр по уровню опыта отключен - показываем все рыбы
+    const matchesLevel = true;
+    
+    // Фильтрация по параметрам воды
+    let matchesWaterParams = true;
+    if (fish.waterParams) {
+      // Проверка pH
+      if (phMinFilter !== undefined || phMaxFilter !== undefined) {
+        const fishPhMin = fish.waterParams.phMin;
+        const fishPhMax = fish.waterParams.phMax;
+        
+        if (fishPhMin !== undefined && fishPhMax !== undefined) {
+          // Рыба подходит, если её диапазон pH пересекается с фильтром
+          const filterMin = phMinFilter ?? 4;
+          const filterMax = phMaxFilter ?? 9;
+          const overlaps = !(fishPhMax < filterMin || fishPhMin > filterMax);
+          matchesWaterParams = matchesWaterParams && overlaps;
+        } else {
+          // Если у рыбы нет данных о pH, она не проходит фильтр
+          matchesWaterParams = false;
+        }
+      }
+      
+      // Проверка температуры
+      if (tempMinFilter !== undefined || tempMaxFilter !== undefined) {
+        const fishTempMin = fish.waterParams.tempMin;
+        const fishTempMax = fish.waterParams.tempMax;
+        
+        if (fishTempMin !== undefined && fishTempMax !== undefined) {
+          // Рыба подходит, если её диапазон температуры пересекается с фильтром
+          const filterMin = tempMinFilter ?? 10;
+          const filterMax = tempMaxFilter ?? 35;
+          const overlaps = !(fishTempMax < filterMin || fishTempMin > filterMax);
+          matchesWaterParams = matchesWaterParams && overlaps;
+        } else {
+          // Если у рыбы нет данных о температуре, она не проходит фильтр
+          matchesWaterParams = false;
+        }
+      }
+    } else {
+      // Если у рыбы нет параметров воды, но фильтр активен - не показываем
+      if (phMinFilter !== undefined || phMaxFilter !== undefined || 
+          tempMinFilter !== undefined || tempMaxFilter !== undefined) {
+        matchesWaterParams = false;
+      }
+      // Если фильтры не установлены, показываем рыбу даже без параметров воды
+    }
+    
+    return matchesSearch && matchesZone && matchesLevel && matchesWaterParams;
   });
 
   const isSelected = (fishId: string) => config.selectedFish.some(f => f.fish.id === fishId);
@@ -42,24 +146,58 @@ export const ConfiguratorStep2 = ({ config, onAddFish, onBack, onNext }: Configu
       <div>
         <h3 className="text-xl font-semibold mb-2 text-foreground">Выберите обитателей</h3>
         <p className="text-muted-foreground">
-          Подберите рыб и креветок для вашего аквариума. Показаны виды, подходящие для "{config.type}".
+          Подберите рыб и креветок для вашего аквариума. Показаны виды, подходящие для выбранного типа.
         </p>
       </div>
 
+      {/* Catalog type switcher */}
+      <div className="flex flex-wrap gap-3">
+        {[
+          { id: 'freshwater', name: 'Общий' },
+          { id: 'planted', name: 'Травник' },
+          { id: 'pseudomarine', name: 'Псевдоморе' },
+          { id: 'shrimp', name: 'Креветочник' },
+          { id: 'cichlid', name: 'Цихлидник' },
+          { id: 'marine', name: 'Морской' },
+        ].map((type) => (
+          <button
+            key={type.id}
+            onClick={() => setCatalogType(type.id as typeof config.type)}
+            className={`px-4 py-2 rounded-2xl text-sm font-medium transition-all ${
+              catalogType === type.id
+                ? 'bg-primary text-primary-foreground shadow-glow'
+                : 'bg-card/50 text-muted-foreground hover:bg-card hover:text-foreground border border-border/50'
+            }`}
+          >
+            {type.name}
+          </button>
+        ))}
+      </div>
+
       {/* Search and filters */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder="Поиск по названию..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-xl bg-card/50 border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-glow transition-all"
-          />
+      <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Поиск по названию, семейству, тегам, особенностям..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 rounded-xl bg-card/50 border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-glow transition-all"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-card/50 flex items-center justify-center hover:bg-card transition-colors"
+              >
+                <X className="w-3 h-3 text-muted-foreground" />
+              </button>
+            )}
+          </div>
         </div>
         
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {['all', 'top', 'middle', 'bottom'].map((zone) => (
             <button
               key={zone}
@@ -73,6 +211,27 @@ export const ConfiguratorStep2 = ({ config, onAddFish, onBack, onNext }: Configu
               {zone === 'all' ? 'Все' : zone === 'top' ? 'Верх' : zone === 'middle' ? 'Середина' : 'Дно'}
             </button>
           ))}
+          
+          <WaterParamsFilter
+            phMin={phMinFilter}
+            phMax={phMaxFilter}
+            tempMin={tempMinFilter}
+            tempMax={tempMaxFilter}
+            onPhChange={(min, max) => {
+              setPhMinFilter(min);
+              setPhMaxFilter(max);
+            }}
+            onTempChange={(min, max) => {
+              setTempMinFilter(min);
+              setTempMaxFilter(max);
+            }}
+            onReset={() => {
+              setPhMinFilter(undefined);
+              setPhMaxFilter(undefined);
+              setTempMinFilter(undefined);
+              setTempMaxFilter(undefined);
+            }}
+          />
         </div>
       </div>
 
@@ -93,6 +252,16 @@ export const ConfiguratorStep2 = ({ config, onAddFish, onBack, onNext }: Configu
           <p>Не найдено подходящих видов</p>
           <p className="text-sm">Попробуйте изменить фильтры или уровень опыта</p>
         </div>
+      )}
+
+      {/* Family Recommendations */}
+      {config.selectedFish.length > 0 && (
+        <FamilyRecommendations
+          config={config}
+          availableFish={availableFish}
+          onFishClick={(fish) => setSelectedFish(fish)}
+          isSelected={isSelected}
+        />
       )}
 
       {/* Navigation */}

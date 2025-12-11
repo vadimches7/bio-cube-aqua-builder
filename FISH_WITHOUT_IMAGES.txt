@@ -1,0 +1,144 @@
+=== РЫБЫ БЕЗ ИЗОБРАЖЕНИЙ (для создания) ===
+
+Всего нужно создать: 35 изображений
+
+1. ID:1 | ПРЕСНОВОДНАЯ
+   Неон Голубой (Paracheirodon innesi)
+   Файл: paracheirodon_innesi.png
+
+2. ID:2 | ПРЕСНОВОДНАЯ
+   Неон Красный (Paracheirodon axelrodi)
+   Файл: paracheirodon_axelrodi.png
+
+3. ID:3 | ПРЕСНОВОДНАЯ
+   Тетра Конго (Phenacogrammus interruptus)
+   Файл: phenacogrammus_interruptus.png
+
+4. ID:4 | ПРЕСНОВОДНАЯ
+   Тернеция (Глофиш) (Gymnocorymbus ternetzi)
+   Файл: gymnocorymbus_ternetzi.png
+
+5. ID:5 | ПРЕСНОВОДНАЯ
+   Гуппи (Poecilia reticulata)
+   Файл: poecilia_reticulata.png
+
+6. ID:6 | ПРЕСНОВОДНАЯ
+   Моллинезия Черная (Poecilia sphenops)
+   Файл: poecilia_sphenops.png
+
+7. ID:7 | ПРЕСНОВОДНАЯ
+   Меченосец (Xiphophorus hellerii)
+   Файл: xiphophorus_hellerii.png
+
+8. ID:8 | ПРЕСНОВОДНАЯ
+   Данио Рерио (Danio rerio)
+   Файл: danio_rerio.png
+
+9. ID:9 | ПРЕСНОВОДНАЯ
+   Барбус Суматранский (Puntigrus tetrazona)
+   Файл: puntigrus_tetrazona.png
+
+10. ID:10 | ПРЕСНОВОДНАЯ
+   Барбус Вишневый (Puntius titteya)
+   Файл: puntius_titteya.png
+
+11. ID:11 | ПРЕСНОВОДНАЯ
+   Расбора Клинопятнистая (Trigonostigma heteromorpha)
+   Файл: trigonostigma_heteromorpha.png
+
+12. ID:12 | ПРЕСНОВОДНАЯ
+   Золотая Рыбка (Короткотелая) (Carassius auratus)
+   Файл: carassius_auratus.png
+
+13. ID:13 | ПРЕСНОВОДНАЯ
+   Петушок (Самец) (Betta splendens)
+   Файл: betta_splendens.png
+
+14. ID:14 | ПРЕСНОВОДНАЯ
+   Гурами Мраморный (Trichopodus trichopterus)
+   Файл: trichopodus_trichopterus.png
+
+15. ID:15 | ПРЕСНОВОДНАЯ
+   Гурами Жемчужный (Trichopodus leerii)
+   Файл: trichopodus_leerii.png
+
+16. ID:16 | ПРЕСНОВОДНАЯ
+   Скалярия (Pterophyllum scalare)
+   Файл: pterophyllum_scalare.png
+
+17. ID:17 | ПРЕСНОВОДНАЯ
+   Дискус (Symphysodon aequifasciatus)
+   Файл: symphysodon_aequifasciatus.png
+
+18. ID:18 | ПРЕСНОВОДНАЯ
+   Апистограмма Рамирези (Mikrogeophagus ramirezi)
+   Файл: mikrogeophagus_ramirezi.png
+
+19. ID:19 | ПРЕСНОВОДНАЯ
+   Цихлазома Чернополосая (Amatitlania nigrofasciata)
+   Файл: amatitlania_nigrofasciata.png
+
+20. ID:20 | ПРЕСНОВОДНАЯ
+   Астронотус (Astronotus ocellatus)
+   Файл: astronotus_ocellatus.png
+
+21. ID:21 | ПРЕСНОВОДНАЯ
+   Еллоу (Малави) (Labidochromis caeruleus)
+   Файл: labidochromis_caeruleus.png
+
+22. ID:22 | ПРЕСНОВОДНАЯ
+   Псевдотрофеус Демасони (Chindongo demasoni)
+   Файл: chindongo_demasoni.png
+
+23. ID:23 | ПРЕСНОВОДНАЯ
+   Коридорас Панда (Corydoras panda)
+   Файл: corydoras_panda.png
+
+24. ID:24 | ПРЕСНОВОДНАЯ
+   Анциструс (Прилипала) (Ancistrus dolichopterus)
+   Файл: ancistrus_dolichopterus.png
+
+25. ID:25 | ПРЕСНОВОДНАЯ
+   Птеригоплихт (Парчовый) (Pterygoplichthys gibbiceps)
+   Файл: pterygoplichthys_gibbiceps.png
+
+26. ID:26 | ПРЕСНОВОДНАЯ
+   Боция Клоун (Chromobotia macracanthus)
+   Файл: chromobotia_macracanthus.png
+
+27. ID:27 | ПРЕСНОВОДНАЯ
+   Акантофтальмус Кюля (Pangio kuhlii)
+   Файл: pangio_kuhlii.png
+
+28. ID:28 | ПРЕСНОВОДНАЯ
+   Креветка Вишня (Neocaridina davidi)
+   Файл: neocaridina_davidi.png
+
+29. ID:29 | ПРЕСНОВОДНАЯ
+   Улитка Ампулярия (Pomacea bridgesii)
+   Файл: pomacea_bridgesii.png
+
+30. ID:30 | ПРЕСНОВОДНАЯ
+   Тетра Черная (Черный Неон) (Hyphessobrycon herbertaxelrodi)
+   Файл: hyphessobrycon_herbertaxelrodi.png
+
+31. ID:31 | ПРЕСНОВОДНАЯ
+   Тетра Королевская (Inpaichthys kerri)
+   Файл: inpaichthys_kerri.png
+
+32. ID:32 | ПРЕСНОВОДНАЯ
+   Наннакара Неоновая (Nannacara anomala)
+   Файл: nannacara_anomala.png
+
+33. ID:33 | ПРЕСНОВОДНАЯ
+   Акантодорас Сетчатый (Acanthodoras cataphractus)
+   Файл: acanthodoras_cataphractus.png
+
+34. ID:34 | ПРЕСНОВОДНАЯ
+   Пецилия (Xiphophorus maculatus)
+   Файл: xiphophorus_maculatus.png
+
+35. ID:35 | ПРЕСНОВОДНАЯ
+   Радужница Боэсмана (Melanotaenia boesemani)
+   Файл: melanotaenia_boesemani.png
+

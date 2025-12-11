@@ -22,5 +22,6 @@ export interface ExternalFishData {
   incompatible_tags: string[];
   description_short?: string;
   features_list?: string[];
+  image_url?: string; // URL или путь к изображению рыбы (например, "/fish/neon-tetra.jpg" или "https://...")
 }
 

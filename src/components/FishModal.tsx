@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Fish, AquariumConfig } from '@/types/aquarium';
 import { Button } from '@/components/ui/button';
-import { X, Plus, Minus, AlertTriangle, Info, Droplets, Users, Ruler, Fish as FishIcon } from 'lucide-react';
+import { X, Plus, Minus, AlertTriangle, Info, Droplets, Users, Ruler, Fish as FishIcon, Sparkles } from 'lucide-react';
 import { WaterParamsVisualization } from './WaterParamsVisualization';
 import { formatWaterParams } from '@/utils/waterParamsChecker';
 import { getTagDescription } from '@/utils/compatibilityMatrix';
@@ -17,6 +17,59 @@ interface FishModalProps {
 export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
   const [count, setCount] = useState(fish.schooling ? (fish.minSchoolSize || 6) : 1);
   const [imageError, setImageError] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Генерируем варианты путей к изображению
+  const getImageVariants = (): string[] => {
+    const variants: string[] = [fish.image]; // Начинаем с основного пути
+    
+    // Если основной путь уже содержит /fish/, пробуем альтернативы
+    if (fish.image.includes('/fish/')) {
+      // Специальные маппинги для известных рыб
+      const knownMappings: Record<string, string> = {
+        'неон': 'neon-tetra',
+        'неон голубой': 'neon-tetra',
+        'paracheirodon innesi': 'neon-tetra',
+        'гуппи': 'guppy',
+        'poecilia reticulata': 'guppy',
+      };
+      
+      const nameKey = fish.name.toLowerCase();
+      if (knownMappings[nameKey] || knownMappings[fish.nameEn.toLowerCase()]) {
+        const mappedName = knownMappings[nameKey] || knownMappings[fish.nameEn.toLowerCase()];
+        variants.push(`/fish/${mappedName}.jpg`);
+        variants.push(`/fish/${mappedName}.png`);
+      }
+      
+      // Варианты: оригинальное имя рыбы (для файлов типа "Акара красногрудая.jpg")
+      variants.push(`/fish/${fish.name}.jpg`);
+      variants.push(`/fish/${fish.name}.png`);
+      
+      // Вариант: латинское имя (первое слово)
+      const latinFirstWord = fish.nameEn.toLowerCase().split(' ')[0];
+      variants.push(`/fish/${latinFirstWord}.jpg`);
+      variants.push(`/fish/${latinFirstWord}.png`);
+      
+      // Вариант: id рыбы
+      variants.push(`/fish/${fish.id}.jpg`);
+      variants.push(`/fish/${fish.id}.png`);
+    }
+    
+    return variants;
+  };
+  
+  const imageVariants = getImageVariants();
+  const currentImageSrc = imageVariants[currentImageIndex] || imageVariants[0];
+  
+  const handleImageError = () => {
+    if (currentImageIndex < imageVariants.length - 1) {
+      // Пробуем следующий вариант
+      setCurrentImageIndex(currentImageIndex + 1);
+    } else {
+      // Все варианты исчерпаны - показываем placeholder
+      setImageError(true);
+    }
+  };
 
   const existingCount = config.selectedFish.find(f => f.fish.id === fish.id)?.count || 0;
   const maxAllowed = Math.min(fish.maxCount - existingCount, Math.floor(config.volume / fish.minVolume));
@@ -53,20 +106,36 @@ export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
           <div className="aspect-video rounded-2xl mb-6 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center relative">
             {!imageError ? (
               <img
-                src={fish.image}
+                key={currentImageIndex}
+                src={currentImageSrc}
                 alt={fish.name}
                 className="w-full h-full object-cover"
-                onError={() => setImageError(true)}
+                onError={handleImageError}
                 loading="lazy"
               />
             ) : (
-              <motion.div
-                animate={{ x: [0, 20, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="text-6xl"
-              >
-                🐠
-              </motion.div>
+              <div className="w-full h-full flex items-center justify-center">
+                <svg
+                  className="w-32 h-32 opacity-40"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M50 20C35 20 25 30 25 45C25 50 27 54 30 57C28 60 27 63 27 66C27 75 35 82 45 82C47 82 49 81 51 80C53 81 55 82 57 82C67 82 75 75 75 66C75 63 74 60 72 57C75 54 77 50 77 45C77 30 67 20 52 20C51 20 50 20 50 20Z"
+                    fill="currentColor"
+                    className="text-primary"
+                  />
+                  <circle cx="42" cy="45" r="3" fill="white" />
+                  <path
+                    d="M30 60L25 65L30 70"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    className="text-primary"
+                  />
+                </svg>
+              </div>
             )}
           </div>
 
@@ -78,6 +147,21 @@ export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
 
           {/* Description */}
           <p className="text-foreground/80 mb-6">{fish.description}</p>
+
+          {/* Fun facts */}
+          {fish.funFacts && fish.funFacts.length > 0 && (
+            <div className="mb-6 p-4 rounded-xl bg-card/50 border border-border/50">
+              <div className="flex items-center gap-2 mb-3">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <h4 className="text-sm font-semibold text-foreground">Уникальные факты</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-foreground/80 list-disc list-inside">
+                {fish.funFacts.map((fact, idx) => (
+                  <li key={idx}>{fact}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 mb-6">

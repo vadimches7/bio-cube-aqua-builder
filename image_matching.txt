@@ -1,0 +1,113 @@
+=== СОПОСТАВЛЕНИЕ ИЗОБРАЖЕНИЙ С РЫБАМИ ===
+
+Найдено совпадений: 25
+Не сопоставлено: 4
+
+--- Совпадения ---
+
+1. Акантодорас сетчатый.jpeg
+   -> ID: 33 | Акантодорас Сетчатый (Acanthodoras cataphractus)
+   Уверенность: medium
+
+2. Акантофтальмус Кюля.jpeg
+   -> ID: 27 | Акантофтальмус Кюля (Pangio kuhlii)
+   Уверенность: high
+
+3. Барбус Суматранский.jpeg
+   -> ID: 9 | Барбус Суматранский (Puntigrus tetrazona)
+   Уверенность: medium
+
+4. Боция клоун.jpeg
+   -> ID: 26 | Боция Клоун (Chromobotia macracanthus)
+   Уверенность: high
+
+5. Гуппи Премиум.jpeg
+   -> ID: 5 | Гуппи (Poecilia reticulata)
+   Уверенность: medium
+
+6. Гурами Жемчужный.jpeg
+   -> ID: 15 | Гурами Жемчужный (Trichopodus leerii)
+   Уверенность: medium
+
+7. Данио рерио.jpeg
+   -> ID: 8 | Данио Рерио (Danio rerio)
+   Уверенность: high
+
+8. Дискус Классический.jpeg
+   -> ID: 17 | Дискус (Symphysodon aequifasciatus)
+   Уверенность: medium
+
+9. Золотая рыбка короткотелая.jpeg
+   -> ID: 12 | Золотая Рыбка (Короткотелая) (Carassius auratus)
+   Уверенность: high
+
+10. Коридорас Панда.jpeg
+   -> ID: 23 | Коридорас Панда (Corydoras panda)
+   Уверенность: high
+
+11. Креветка Вишня.jpeg
+   -> ID: 28 | Креветка Вишня (Neocaridina davidi)
+   Уверенность: high
+
+12. Меченосец Классический.jpeg
+   -> ID: 7 | Меченосец (Xiphophorus hellerii)
+   Уверенность: medium
+
+13. Наннакара Неоновая.jpeg
+   -> ID: 32 | Наннакара Неоновая (Nannacara anomala)
+   Уверенность: high
+
+14. Неон голубой  .jpeg
+   -> ID: 1 | Неон Голубой (Paracheirodon innesi)
+   Уверенность: medium
+
+15. Неон красный.jpeg
+   -> ID: 2 | Неон Красный (Paracheirodon axelrodi)
+   Уверенность: medium
+
+16. Пецилия Классическая.jpeg
+   -> ID: 34 | Пецилия (Xiphophorus maculatus)
+   Уверенность: medium
+
+17. Псевдотрофеус Демасони.jpeg
+   -> ID: 22 | Псевдотрофеус Демасони (Chindongo demasoni)
+   Уверенность: high
+
+18. Птеригоплихт парчовыйё.jpeg
+   -> ID: 25 | Птеригоплихт (Парчовый) (Pterygoplichthys gibbiceps)
+   Уверенность: medium
+
+19. Радужница Боэсмана.jpeg
+   -> ID: 35 | Радужница Боэсмана (Melanotaenia boesemani)
+   Уверенность: high
+
+20. Тернеция Глофиш.jpeg
+   -> ID: 4 | Тернеция (Глофиш) (Gymnocorymbus ternetzi)
+   Уверенность: high
+
+21. Тетра Конго.jpeg
+   -> ID: 3 | Тетра Конго (Phenacogrammus interruptus)
+   Уверенность: high
+
+22. Тетра королевская.jpeg
+   -> ID: 31 | Тетра Королевская (Inpaichthys kerri)
+   Уверенность: high
+
+23. Улитка ампулярия.jpeg
+   -> ID: 29 | Улитка Ампулярия (Pomacea bridgesii)
+   Уверенность: high
+
+24. Цихлазома чернополосая.jpeg
+   -> ID: 19 | Цихлазома Чернополосая (Amatitlania nigrofasciata)
+   Уверенность: high
+
+25. Цихлида Еллоу (Малави).jpeg
+   -> ID: 21 | Еллоу (Малави) (Labidochromis caeruleus)
+   Уверенность: medium
+
+--- Не сопоставленные файлы ---
+
+  - Анциструс обыкновенный.jpeg
+  - Барбус Вишнёвый.jpeg
+  - Моллинезия чёрная.jpeg
+  - Тетра Чёрная (Черный Неон).jpeg

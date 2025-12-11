@@ -75,7 +75,7 @@ export const convertExternalFishToAppFormat = (externalFish: ExternalFishData): 
 
   const description =
     externalFish.description_short ||
-    `${externalFish.name_ru} (${externalFish.name_lat}). ${externalFish.family_group}. Размер до ${externalFish.size_cm} см.`;
+    `${externalFish.name_ru} (${externalFish.name_lat}). Семейство: ${externalFish.family_group}. Размер до ${externalFish.size_cm} см.`;
 
   // Конвертируем параметры воды
   const waterParams: WaterParams | undefined = externalFish.water_params
@@ -88,11 +88,60 @@ export const convertExternalFishToAppFormat = (externalFish: ExternalFishData): 
       }
     : undefined;
 
+  // Определяем путь к изображению
+  let imagePath: string;
+  
+  if (externalFish.image_url) {
+    // Если есть явно указанный image_url - используем его
+    imagePath = externalFish.image_url.startsWith('/') || externalFish.image_url.startsWith('http')
+      ? externalFish.image_url 
+      : `/fish/${externalFish.image_url}`;
+  } else {
+    // Пытаемся найти изображение по имени рыбы
+    // Транслитерация русского имени в латиницу
+    const transliterate = (str: string): string => {
+      const map: Record<string, string> = {
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh',
+        'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o',
+        'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'ts',
+        'ч': 'ch', 'ш': 'sh', 'щ': 'sch', 'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
+      };
+      return str.toLowerCase()
+        .split('')
+        .map(char => map[char] || (char.match(/[a-z0-9]/) ? char : '-'))
+        .join('')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+    };
+    
+    const cleanNameRu = externalFish.name_ru.toLowerCase().replace(/[()]/g, '').trim();
+    const cleanNameLat = externalFish.name_lat.toLowerCase().split(' ')[0];
+    
+    // Специальные маппинги для известных рыб
+    const knownMappings: Record<string, string> = {
+      'неон голубой': 'neon-tetra',
+      'неон': 'neon-tetra',
+      'paracheirodon innesi': 'neon-tetra',
+      'гуппи': 'guppy',
+      'poecilia reticulata': 'guppy',
+    };
+    
+    const nameKey = cleanNameRu.toLowerCase();
+    if (knownMappings[nameKey] || knownMappings[externalFish.name_lat.toLowerCase()]) {
+      const mappedName = knownMappings[nameKey] || knownMappings[externalFish.name_lat.toLowerCase()];
+      imagePath = `/fish/${mappedName}.jpg`;
+    } else {
+      // Пробуем разные варианты имени (компонент будет пробовать их через onError)
+      // Начинаем с транслитерации русского имени
+      imagePath = `/fish/${transliterate(cleanNameRu)}.jpg`;
+    }
+  }
+
   return {
     id,
     name: externalFish.name_ru,
     nameEn: externalFish.name_lat,
-    image: `/fish/${id}.jpg`,
+    image: imagePath,
     minVolume: externalFish.min_tank_liters,
     maxCount,
     zone: determineZone(externalFish.family_group, externalFish.size_cm),
@@ -108,6 +157,9 @@ export const convertExternalFishToAppFormat = (externalFish: ExternalFishData): 
     sizeCm: externalFish.size_cm,
     familyGroup: externalFish.family_group,
     incompatibleTags: externalFish.incompatible_tags || [],
+    funFacts: externalFish.features_list && externalFish.features_list.length > 0
+      ? externalFish.features_list
+      : undefined,
   };
 };
 

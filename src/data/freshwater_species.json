@@ -12,12 +12,17 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 5.0,
-      "ph_max": 7.0,
+      "ph_min": 5,
+      "ph_max": 7,
       "temp_min": 20,
       "temp_max": 26
     },
-    "incompatible_tags": ["large_predator", "fin_nipper", "high_ph_water"]
+    "incompatible_tags": [
+      "large_predator",
+      "fin_nipper",
+      "high_ph_water"
+    ],
+    "image_url": "/fish/paracheirodon_innesi.png"
   },
   {
     "id": 2,
@@ -32,12 +37,17 @@
     "min_group_size": 6,
     "difficulty": 2,
     "water_params": {
-      "ph_min": 5.0,
+      "ph_min": 5,
       "ph_max": 6.5,
       "temp_min": 23,
       "temp_max": 28
     },
-    "incompatible_tags": ["large_predator", "fin_nipper", "high_ph_water"]
+    "incompatible_tags": [
+      "large_predator",
+      "fin_nipper",
+      "high_ph_water"
+    ],
+    "image_url": "/fish/paracheirodon_axelrodi.png"
   },
   {
     "id": 3,
@@ -52,12 +62,16 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": ["large_predator", "long_fins"]
+    "incompatible_tags": [
+      "large_predator",
+      "long_fins"
+    ],
+    "image_url": "/fish/phenacogrammus_interruptus.png"
   },
   {
     "id": 4,
@@ -72,12 +86,15 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": ["long_fins"]
+    "incompatible_tags": [
+      "long_fins"
+    ],
+    "image_url": "/fish/gymnocorymbus_ternetzi.png"
   },
   {
     "id": 5,
@@ -92,12 +109,17 @@
     "min_group_size": 3,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 7.0,
-      "ph_max": 8.0,
+      "ph_min": 7,
+      "ph_max": 8,
       "temp_min": 22,
       "temp_max": 28
     },
-    "incompatible_tags": ["fin_nipper", "large_predator", "soft_acid_water"]
+    "incompatible_tags": [
+      "fin_nipper",
+      "large_predator",
+      "soft_acid_water"
+    ],
+    "image_url": "/fish/poecilia_reticulata.png"
   },
   {
     "id": 6,
@@ -112,12 +134,15 @@
     "min_group_size": 3,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 7.0,
-      "ph_max": 8.0,
+      "ph_min": 7,
+      "ph_max": 8,
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["soft_acid_water"]
+    "incompatible_tags": [
+      "soft_acid_water"
+    ],
+    "image_url": "/fish/poecilia_sphenops.png"
   },
   {
     "id": 7,
@@ -132,12 +157,15 @@
     "min_group_size": 3,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 7.0,
-      "ph_max": 8.0,
+      "ph_min": 7,
+      "ph_max": 8,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": ["soft_acid_water"]
+    "incompatible_tags": [
+      "soft_acid_water"
+    ],
+    "image_url": "/fish/xiphophorus_hellerii.png"
   },
   {
     "id": 8,
@@ -157,7 +185,11 @@
       "temp_min": 18,
       "temp_max": 24
     },
-    "incompatible_tags": ["slow_moving", "high_temp_fish"]
+    "incompatible_tags": [
+      "slow_moving",
+      "high_temp_fish"
+    ],
+    "image_url": "/fish/danio_rerio.png"
   },
   {
     "id": 9,
@@ -172,12 +204,18 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": ["long_fins", "slow_moving", "betta", "angelfish"]
+    "incompatible_tags": [
+      "long_fins",
+      "slow_moving",
+      "betta",
+      "angelfish"
+    ],
+    "image_url": "/fish/puntigrus_tetrazona.png"
   },
   {
     "id": 10,
@@ -192,12 +230,15 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": ["aggressive_cichlid"]
+    "incompatible_tags": [
+      "aggressive_cichlid"
+    ],
+    "image_url": "/fish/puntius_titteya.png"
   },
   {
     "id": 11,
@@ -212,12 +253,15 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
-      "ph_max": 7.0,
+      "ph_min": 6,
+      "ph_max": 7,
       "temp_min": 23,
       "temp_max": 28
     },
-    "incompatible_tags": ["large_predator"]
+    "incompatible_tags": [
+      "large_predator"
+    ],
+    "image_url": "/fish/trigonostigma_heteromorpha.png"
   },
   {
     "id": 12,
@@ -233,11 +277,15 @@
     "difficulty": 2,
     "water_params": {
       "ph_min": 6.5,
-      "ph_max": 8.0,
+      "ph_max": 8,
       "temp_min": 18,
       "temp_max": 23
     },
-    "incompatible_tags": ["high_temp_fish", "planted_tank_incompatible"]
+    "incompatible_tags": [
+      "high_temp_fish",
+      "planted_tank_incompatible"
+    ],
+    "image_url": "/fish/carassius_auratus.png"
   },
   {
     "id": 13,
@@ -252,12 +300,17 @@
     "min_group_size": 1,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["male_betta", "fin_nipper", "long_fins"]
+    "incompatible_tags": [
+      "male_betta",
+      "fin_nipper",
+      "long_fins"
+    ],
+    "image_url": "/fish/betta_splendens.png"
   },
   {
     "id": 14,
@@ -272,12 +325,15 @@
     "min_group_size": 1,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["aggressive_cichlid"]
+    "incompatible_tags": [
+      "aggressive_cichlid"
+    ],
+    "image_url": "/fish/trichopodus_trichopterus.png"
   },
   {
     "id": 15,
@@ -292,12 +348,15 @@
     "min_group_size": 1,
     "difficulty": 2,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["aggressive_cichlid"]
+    "incompatible_tags": [
+      "aggressive_cichlid"
+    ],
+    "image_url": "/fish/trichopodus_leerii.png"
   },
   {
     "id": 16,
@@ -312,12 +371,16 @@
     "min_group_size": 2,
     "difficulty": 2,
     "water_params": {
-      "ph_min": 6.0,
-      "ph_max": 7.0,
+      "ph_min": 6,
+      "ph_max": 7,
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["small_fish_prey", "fin_nipper"]
+    "incompatible_tags": [
+      "small_fish_prey",
+      "fin_nipper"
+    ],
+    "image_url": "/fish/pterophyllum_scalare.png"
   },
   {
     "id": 17,
@@ -337,7 +400,11 @@
       "temp_min": 28,
       "temp_max": 31
     },
-    "incompatible_tags": ["high_ph_water", "low_temp_fish"]
+    "incompatible_tags": [
+      "high_ph_water",
+      "low_temp_fish"
+    ],
+    "image_url": "/fish/symphysodon_aequifasciatus.png"
   },
   {
     "id": 18,
@@ -353,11 +420,14 @@
     "difficulty": 3,
     "water_params": {
       "ph_min": 5.5,
-      "ph_max": 7.0,
+      "ph_max": 7,
       "temp_min": 26,
       "temp_max": 30
     },
-    "incompatible_tags": ["high_ph_water"]
+    "incompatible_tags": [
+      "high_ph_water"
+    ],
+    "image_url": "/fish/mikrogeophagus_ramirezi.png"
   },
   {
     "id": 19,
@@ -372,12 +442,16 @@
     "min_group_size": 2,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 7.0,
-      "ph_max": 8.0,
+      "ph_min": 7,
+      "ph_max": 8,
       "temp_min": 22,
       "temp_max": 28
     },
-    "incompatible_tags": ["small_fish_prey", "planted_tank_incompatible"]
+    "incompatible_tags": [
+      "small_fish_prey",
+      "planted_tank_incompatible"
+    ],
+    "image_url": "/fish/amatitlania_nigrofasciata.png"
   },
   {
     "id": 20,
@@ -392,12 +466,16 @@
     "min_group_size": 1,
     "difficulty": 2,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 22,
       "temp_max": 28
     },
-    "incompatible_tags": ["small_fish_prey", "planted_tank_incompatible"]
+    "incompatible_tags": [
+      "small_fish_prey",
+      "planted_tank_incompatible"
+    ],
+    "image_url": "/fish/astronotus_ocellatus.png"
   },
   {
     "id": 21,
@@ -417,7 +495,11 @@
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["soft_acid_water", "planted_tank_incompatible"]
+    "incompatible_tags": [
+      "soft_acid_water",
+      "planted_tank_incompatible"
+    ],
+    "image_url": "/fish/labidochromis_caeruleus.png"
   },
   {
     "id": 22,
@@ -437,7 +519,11 @@
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["soft_acid_water", "community_fish"]
+    "incompatible_tags": [
+      "soft_acid_water",
+      "community_fish"
+    ],
+    "image_url": "/fish/chindongo_demasoni.png"
   },
   {
     "id": 23,
@@ -452,12 +538,13 @@
     "min_group_size": 5,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": []
+    "incompatible_tags": [],
+    "image_url": "/fish/corydoras_panda.png"
   },
   {
     "id": 24,
@@ -472,12 +559,15 @@
     "min_group_size": 1,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": ["aggressive_cichlid_territory"]
+    "incompatible_tags": [
+      "aggressive_cichlid_territory"
+    ],
+    "image_url": "/fish/ancistrus_dolichopterus.png"
   },
   {
     "id": 25,
@@ -497,7 +587,11 @@
       "temp_min": 22,
       "temp_max": 28
     },
-    "incompatible_tags": ["small_aquarium", "wood_required"]
+    "incompatible_tags": [
+      "small_aquarium",
+      "wood_required"
+    ],
+    "image_url": "/fish/pterygoplichthys_gibbiceps.png"
   },
   {
     "id": 26,
@@ -512,12 +606,15 @@
     "min_group_size": 5,
     "difficulty": 2,
     "water_params": {
-      "ph_min": 6.0,
-      "ph_max": 7.0,
+      "ph_min": 6,
+      "ph_max": 7,
       "temp_min": 25,
       "temp_max": 30
     },
-    "incompatible_tags": ["snail_eater"]
+    "incompatible_tags": [
+      "snail_eater"
+    ],
+    "image_url": "/fish/chromobotia_macracanthus.png"
   },
   {
     "id": 27,
@@ -532,12 +629,15 @@
     "min_group_size": 3,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
-      "ph_max": 7.0,
+      "ph_min": 6,
+      "ph_max": 7,
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["sharp_substrate"]
+    "incompatible_tags": [
+      "sharp_substrate"
+    ],
+    "image_url": "/fish/pangio_kuhlii.png"
   },
   {
     "id": 28,
@@ -557,7 +657,10 @@
       "temp_min": 20,
       "temp_max": 26
     },
-    "incompatible_tags": ["predator_fish"]
+    "incompatible_tags": [
+      "predator_fish"
+    ],
+    "image_url": "/fish/neocaridina_davidi.png"
   },
   {
     "id": 29,
@@ -573,11 +676,14 @@
     "difficulty": 1,
     "water_params": {
       "ph_min": 6.5,
-      "ph_max": 8.0,
+      "ph_max": 8,
       "temp_min": 20,
       "temp_max": 28
     },
-    "incompatible_tags": ["snail_eater"]
+    "incompatible_tags": [
+      "snail_eater"
+    ],
+    "image_url": "/fish/pomacea_bridgesii.png"
   },
   {
     "id": 30,
@@ -592,12 +698,15 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": ["large_predator"]
+    "incompatible_tags": [
+      "large_predator"
+    ],
+    "image_url": "/fish/hyphessobrycon_herbertaxelrodi.png"
   },
   {
     "id": 31,
@@ -612,12 +721,15 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 23,
       "temp_max": 27
     },
-    "incompatible_tags": ["large_predator"]
+    "incompatible_tags": [
+      "large_predator"
+    ],
+    "image_url": "/fish/inpaichthys_kerri.png"
   },
   {
     "id": 32,
@@ -637,7 +749,10 @@
       "temp_min": 24,
       "temp_max": 27
     },
-    "incompatible_tags": ["small_shrimp"]
+    "incompatible_tags": [
+      "small_shrimp"
+    ],
+    "image_url": "/fish/nannacara_anomala.png"
   },
   {
     "id": 33,
@@ -652,12 +767,15 @@
     "min_group_size": 1,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 6.0,
+      "ph_min": 6,
       "ph_max": 7.5,
       "temp_min": 24,
       "temp_max": 28
     },
-    "incompatible_tags": ["small_catfish"]
+    "incompatible_tags": [
+      "small_catfish"
+    ],
+    "image_url": "/fish/acanthodoras_cataphractus.png"
   },
   {
     "id": 34,
@@ -672,12 +790,15 @@
     "min_group_size": 3,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 7.0,
-      "ph_max": 8.0,
+      "ph_min": 7,
+      "ph_max": 8,
       "temp_min": 22,
       "temp_max": 26
     },
-    "incompatible_tags": ["soft_acid_water"]
+    "incompatible_tags": [
+      "soft_acid_water"
+    ],
+    "image_url": "/fish/xiphophorus_maculatus.png"
   },
   {
     "id": 35,
@@ -692,12 +813,15 @@
     "min_group_size": 6,
     "difficulty": 1,
     "water_params": {
-      "ph_min": 7.0,
-      "ph_max": 8.0,
+      "ph_min": 7,
+      "ph_max": 8,
       "temp_min": 25,
       "temp_max": 30
     },
-    "incompatible_tags": ["slow_moving", "high_temp_fish"]
+    "incompatible_tags": [
+      "slow_moving",
+      "high_temp_fish"
+    ],
+    "image_url": "/fish/melanotaenia_boesemani.png"
   }
 ]
-
