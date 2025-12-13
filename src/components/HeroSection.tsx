@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 
 export const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
   const scrollToConfigurator = () => {
     document.getElementById('configurator')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -144,38 +147,25 @@ export const HeroSection = () => {
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
               {/* Glass effect container */}
               <div className="absolute inset-0 glass-card water-shimmer">
-                {/* Aquarium interior simulation */}
-                <div className="absolute inset-4 rounded-2xl bg-gradient-to-b from-ocean-surface/30 to-ocean-deep/50">
-                  {/* Light rays */}
-                  <div className="absolute top-0 left-1/4 w-1/2 h-full bg-gradient-to-b from-primary/10 to-transparent blur-xl" />
-                  
-                  {/* Animated fish silhouettes */}
-                  {[...Array(5)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-8 h-4 rounded-full bg-primary/20"
-                      style={{
-                        top: `${20 + i * 15}%`,
-                      }}
-                      animate={{
-                        x: ['0%', '400%', '0%'],
-                        y: [0, 10, 0],
-                      }}
-                      transition={{
-                        duration: 8 + i * 2,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                        delay: i * 0.5,
-                      }}
-                    />
-                  ))}
-                  
-                  {/* Plants at bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-success/20 to-transparent" />
-                </div>
+                {/* Background video */}
+                <video
+                  ref={videoRef}
+                  src="/Video 2.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-4 rounded-2xl w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-cover z-0"
+                />
+                
+                {/* Overlay effects for better integration */}
+                <div className="absolute inset-4 rounded-2xl bg-gradient-to-b from-transparent via-transparent to-ocean-deep/20 z-1 pointer-events-none" />
+                
+                {/* Light rays overlay */}
+                <div className="absolute inset-4 rounded-2xl top-0 left-1/4 w-1/2 h-full bg-gradient-to-b from-primary/10 to-transparent blur-xl z-1 pointer-events-none" />
                 
                 {/* Glass reflection */}
-                <div className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-glass/5 to-transparent" />
+                <div className="absolute inset-4 rounded-2xl top-0 left-0 w-1/3 h-full bg-gradient-to-r from-glass/5 to-transparent z-1 pointer-events-none" />
               </div>
               
               {/* Glow effect */}

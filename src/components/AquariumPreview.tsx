@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { AquariumConfig, AQUARIUM_TYPES } from '@/types/aquarium';
 
@@ -8,6 +8,7 @@ interface AquariumPreviewProps {
 
 export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+  const videoRef = useRef<HTMLVideoElement>(null);
   const typeInfo = AQUARIUM_TYPES.find(t => t.id === config.type);
   
   // Calculate fill level based on selected fish
@@ -50,21 +51,40 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
 
       {/* Aquarium visualization */}
       <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-b from-[#0d1a24] via-[#0a121a] to-[#0a161f] border border-glass/10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.65)]">
-        {/* Glass frame effect */}
-        <div className="absolute inset-0 rounded-2xl border border-glass/10 shadow-inner pointer-events-none" />
+        {/* Background video */}
+        {config.backgroundVideo && (
+          <video
+            ref={videoRef}
+            src={config.backgroundVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          />
+        )}
         
-        {/* Top light reflection */}
-        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white/10 via-white/5 to-transparent z-10" />
+        {/* Fallback background if no video */}
+        {!config.backgroundVideo && (
+          <>
+            {/* Glass frame effect */}
+            <div className="absolute inset-0 rounded-2xl border border-glass/10 shadow-inner pointer-events-none" />
+            
+            {/* Top light reflection */}
+            <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white/10 via-white/5 to-transparent z-10" />
 
-        {/* Ambient glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(71,255,235,0.08),transparent_35%),radial-gradient(circle_at_80%_25%,rgba(120,190,255,0.08),transparent_30%)]" />
+            {/* Ambient glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(71,255,235,0.08),transparent_35%),radial-gradient(circle_at_80%_25%,rgba(120,190,255,0.08),transparent_30%)]" />
+          </>
+        )}
         
-        {/* Water fill */}
+        {/* Water fill - показываем только если нет видео или поверх видео с прозрачностью */}
         <motion.div
-          className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t ${getWaterColor()} backdrop-blur-[1px]`}
+          className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t ${getWaterColor()} backdrop-blur-[1px] ${config.backgroundVideo ? 'opacity-30' : ''}`}
           initial={{ height: waterHeight }}
           animate={{ height: waterHeight }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
+          style={{ zIndex: config.backgroundVideo ? 1 : 'auto' }}
         >
           {/* Surface shine */}
           <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/15 to-transparent" />
@@ -85,7 +105,7 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
         {/* Foreground vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(0,0,0,0.25)_90%)] pointer-events-none" />
 
-        {/* Animated fish */}
+        {/* Animated fish - поверх видео */}
         {config.selectedFish.slice(0, 8).map((sf, index) => {
           const zoneTop = sf.fish.zone === 'top' ? '18%' : sf.fish.zone === 'bottom' ? '70%' : '44%';
           const scale = Math.min(1.4, 0.8 + sf.count * 0.12);
@@ -101,6 +121,7 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
               style={{
                 top: zoneTop,
                 left: leftPosition,
+                zIndex: 2,
               }}
               animate={{
                 y: [0, index % 2 === 0 ? 8 : -8, 0],
@@ -172,7 +193,7 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
           );
         })}
         
-        {/* Bubbles */}
+        {/* Bubbles - поверх видео */}
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
@@ -180,6 +201,7 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
             style={{
               left: `${20 + i * 12}%`,
               bottom: '12%',
+              zIndex: 2,
             }}
             animate={{
               y: [0, -200],
@@ -194,7 +216,7 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
           />
         ))}
         
-        {/* Floating particles */}
+        {/* Floating particles - поверх видео */}
         {[...Array(10)].map((_, i) => (
           <motion.div
             key={`p-${i}`}
@@ -202,6 +224,7 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
             style={{
               left: `${10 + i * 8}%`,
               top: `${20 + (i % 5) * 12}%`,
+              zIndex: 2,
             }}
             animate={{
               y: [0, i % 2 === 0 ? -12 : 12, 0],

@@ -54,6 +54,7 @@ export interface AquariumConfig {
   experienceLevel: ExperienceLevel;
   interiorStyle: InteriorStyle;
   selectedFish: SelectedFish[];
+  backgroundVideo?: string; // URL или путь к видео для фона
 }
 
 export interface CompatibilityResult {
