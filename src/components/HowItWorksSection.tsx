@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Droplets, Fish, CheckCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const steps = [
   {
@@ -19,7 +20,11 @@ const steps = [
   },
 ];
 
-export const HowItWorksSection = () => {
+interface HowItWorksSectionProps {
+  onOpenConfigurator: () => void;
+}
+
+export const HowItWorksSection = ({ onOpenConfigurator }: HowItWorksSectionProps) => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background glow */}
@@ -77,6 +82,31 @@ export const HowItWorksSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <Button 
+            variant="premium" 
+            size="xl"
+            onClick={onOpenConfigurator}
+            className="group"
+          >
+            Начать сборку аквариума
+            <motion.span
+              className="inline-block ml-2"
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              →
+            </motion.span>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

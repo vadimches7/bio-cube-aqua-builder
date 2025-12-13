@@ -18,22 +18,22 @@ interface ConfiguratorStep1Props {
 
 export const ConfiguratorStep1 = ({ config, onUpdate, onNext }: ConfiguratorStep1Props) => {
   return (
-    <div className="space-y-10">
+    <div className="space-y-4">
       <div>
-        <h3 className="text-xl font-semibold mb-2 text-foreground">Параметры аквариума</h3>
-        <p className="text-muted-foreground">Настройте объём ползунком, подберите опыт и стиль</p>
+        <h3 className="text-lg font-semibold mb-1 text-foreground">Параметры аквариума</h3>
+        <p className="text-xs text-muted-foreground">Настройте объём, опыт и стиль</p>
       </div>
 
-      {/* Volume selection */}
-      <div className="space-y-4 p-4 rounded-2xl border border-dashed border-border/60 bg-card/30">
+      {/* Volume selection - compact */}
+      <div className="space-y-2 p-3 rounded-xl border border-dashed border-border/60 bg-card/30">
         <div className="flex items-center gap-2">
-          <Info className="w-4 h-4 text-primary" />
-          <span className="text-sm font-medium text-foreground">Или настройте объём вручную</span>
+          <Info className="w-3 h-3 text-primary" />
+          <span className="text-xs font-medium text-foreground">Настройте объём</span>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-foreground">Объём аквариума</label>
-            <span className="text-xl font-bold text-gradient">{config.volume}L</span>
+            <label className="text-xs font-medium text-foreground">Объём</label>
+            <span className="text-lg font-bold text-gradient">{config.volume}L</span>
           </div>
           <Slider
             value={[config.volume]}
@@ -45,36 +45,36 @@ export const ConfiguratorStep1 = ({ config, onUpdate, onNext }: ConfiguratorStep
           />
           <div className="flex justify-between text-xs text-muted-foreground">
             <span>40L</span>
-            <span>Рекомендовано: 100-200L</span>
+            <span className="text-[10px]">100-200L</span>
             <span>500L</span>
           </div>
         </div>
       </div>
 
-      {/* Experience level */}
-      <div className="space-y-4">
-        <label className="text-sm font-medium text-foreground">Ваш уровень опыта</label>
-        <div className="grid grid-cols-3 gap-3">
+      {/* Experience level - compact */}
+      <div className="space-y-2">
+        <label className="text-xs font-medium text-foreground">Уровень опыта</label>
+        <div className="grid grid-cols-3 gap-2">
           {EXPERIENCE_LEVELS.map((level) => (
             <button
               key={level.id}
               onClick={() => onUpdate({ experienceLevel: level.id })}
-              className={`p-4 rounded-xl text-center transition-all duration-300 ${
+              className={`p-2 rounded-lg text-center transition-all duration-300 text-xs ${
                 config.experienceLevel === level.id
                   ? 'bg-primary/20 border-2 border-primary text-foreground'
                   : 'bg-card/50 border border-border/50 text-muted-foreground hover:bg-card hover:text-foreground'
               }`}
             >
-              <span className="text-sm font-medium">{level.name}</span>
+              <span className="font-medium">{level.name}</span>
             </button>
           ))}
         </div>
       </div>
 
-      {/* Interior style with images */}
-      <div className="space-y-4">
-        <label className="text-sm font-medium text-foreground">Стиль интерьера</label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Interior style with images - compact */}
+      <div className="space-y-2">
+        <label className="text-xs font-medium text-foreground">Стиль интерьера</label>
+        <div className="grid grid-cols-2 gap-2">
           {INTERIOR_STYLES.map((style) => {
             const image = INTERIOR_STYLE_IMAGES[style.id];
             const selected = config.interiorStyle === style.id;
@@ -82,26 +82,23 @@ export const ConfiguratorStep1 = ({ config, onUpdate, onNext }: ConfiguratorStep
               <button
                 key={style.id}
                 onClick={() => onUpdate({ interiorStyle: style.id })}
-                className={`group rounded-2xl overflow-hidden border transition-all duration-300 text-left ${
+                className={`group rounded-xl overflow-hidden border transition-all duration-300 text-left ${
                   selected
                     ? 'border-primary shadow-glow bg-primary/10'
                     : 'border-border/50 bg-card/40 hover:border-primary/40'
                 }`}
               >
                 <div className="relative">
-                  <img src={image} alt={style.name} className="w-full h-36 object-cover" />
+                  <img src={image} alt={style.name} className="w-full h-20 object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   {selected && (
-                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs bg-primary text-primary-foreground shadow">
-                      Выбрано
+                    <span className="absolute top-1 left-1 px-2 py-0.5 rounded text-[10px] bg-primary text-primary-foreground shadow">
+                      ✓
                     </span>
                   )}
                 </div>
-                <div className="p-4 space-y-1">
-                  <div className="text-sm font-semibold text-foreground">{style.name}</div>
-                  <p className="text-xs text-muted-foreground">
-                    Подходит для {style.id === 'minimalism' ? 'минималистичных' : style.id === 'loft' ? 'лофт' : style.id === 'scandi' ? 'скандинавских' : 'современных'} интерьеров
-                  </p>
+                <div className="p-2">
+                  <div className="text-xs font-semibold text-foreground">{style.name}</div>
                 </div>
               </button>
             );
@@ -109,11 +106,11 @@ export const ConfiguratorStep1 = ({ config, onUpdate, onNext }: ConfiguratorStep
         </div>
       </div>
 
-      {/* Next button */}
-      <div className="flex justify-end pt-4">
-        <Button variant="premium" size="lg" onClick={onNext}>
-          Выбрать обитателей
-          <ArrowRight className="w-5 h-5 ml-2" />
+      {/* Next button - compact */}
+      <div className="flex justify-end pt-2">
+        <Button variant="premium" size="sm" onClick={onNext}>
+          Далее
+          <ArrowRight className="w-4 h-4 ml-1" />
         </Button>
       </div>
     </div>

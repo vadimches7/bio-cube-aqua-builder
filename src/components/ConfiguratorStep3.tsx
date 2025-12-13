@@ -63,199 +63,199 @@ export const ConfiguratorStep3 = ({ config, onBack }: ConfiguratorStep3Props) =>
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4">
       <div>
-        <h3 className="text-xl font-semibold mb-2 text-foreground">Ваш проект готов!</h3>
-        <p className="text-muted-foreground">
-          Проверьте конфигурацию и отправьте заявку на запуск аквариума
+        <h3 className="text-base font-semibold mb-1 text-foreground">Ваш проект готов!</h3>
+        <p className="text-xs text-muted-foreground">
+          Проверьте конфигурацию и отправьте заявку
         </p>
       </div>
 
-      {/* Project summary */}
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* Configuration summary */}
-        <div className="p-6 rounded-2xl bg-card/50 border border-border/50">
-          <h4 className="font-semibold text-foreground mb-4">Конфигурация</h4>
-          <div className="space-y-3">
-            <div className="flex justify-between">
+      {/* Project summary - compact */}
+      <div className="grid md:grid-cols-2 gap-3">
+        {/* Configuration summary - compact */}
+        <div className="p-3 rounded-xl bg-card/50 border border-border/50">
+          <h4 className="text-sm font-semibold text-foreground mb-2">Конфигурация</h4>
+          <div className="space-y-1.5">
+            <div className="flex justify-between text-xs">
               <span className="text-muted-foreground">Тип</span>
               <span className="font-medium text-foreground">{typeInfo?.name}</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between text-xs">
               <span className="text-muted-foreground">Объём</span>
               <span className="font-medium text-foreground">{config.volume}L</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between text-xs">
               <span className="text-muted-foreground">Стиль</span>
               <span className="font-medium text-foreground">{styleInfo?.name}</span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between text-xs">
               <span className="text-muted-foreground">Видов</span>
               <span className="font-medium text-foreground">{config.selectedFish.length}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Всего особей</span>
+            <div className="flex justify-between text-xs">
+              <span className="text-muted-foreground">Особей</span>
               <span className="font-medium text-foreground">{totalFish}</span>
             </div>
           </div>
         </div>
 
-        {/* Equipment recommendations */}
-        <div className="p-6 rounded-2xl bg-card/50 border border-border/50">
-          <h4 className="font-semibold text-foreground mb-4">Рекомендуемое оборудование</h4>
-          <div className="space-y-3">
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-card/50">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Filter className="w-5 h-5 text-primary" />
+        {/* Equipment recommendations - compact */}
+        <div className="p-3 rounded-xl bg-card/50 border border-border/50">
+          <h4 className="text-sm font-semibold text-foreground mb-2">Оборудование</h4>
+          <div className="space-y-2">
+            <div className="flex items-center gap-2 p-2 rounded-lg bg-card/50">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <Filter className="w-4 h-4 text-primary" />
               </div>
-              <div>
-                <div className="font-medium text-foreground">Внешний фильтр</div>
-                <div className="text-xs text-muted-foreground">Производительность от {Math.round(config.volume * 4)} л/ч</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-card/50">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Thermometer className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <div className="font-medium text-foreground">Нагреватель</div>
-                <div className="text-xs text-muted-foreground">{Math.round(config.volume * 0.5)}W с терморегулятором</div>
+              <div className="min-w-0">
+                <div className="text-xs font-medium text-foreground">Фильтр</div>
+                <div className="text-[10px] text-muted-foreground">от {Math.round(config.volume * 4)} л/ч</div>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-card/50">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Sun className="w-5 h-5 text-primary" />
+            <div className="flex items-center gap-2 p-2 rounded-lg bg-card/50">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <Thermometer className="w-4 h-4 text-primary" />
               </div>
-              <div>
-                <div className="font-medium text-foreground">LED освещение</div>
-                <div className="text-xs text-muted-foreground">{config.type === 'planted' ? 'Полный спектр для растений' : 'Декоративное'}</div>
+              <div className="min-w-0">
+                <div className="text-xs font-medium text-foreground">Нагреватель</div>
+                <div className="text-[10px] text-muted-foreground">{Math.round(config.volume * 0.5)}W</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 p-2 rounded-lg bg-card/50">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                <Sun className="w-4 h-4 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-xs font-medium text-foreground">LED</div>
+                <div className="text-[10px] text-muted-foreground">{config.type === 'planted' ? 'Для растений' : 'Декоративное'}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Fish table */}
-      <div className="overflow-hidden rounded-2xl border border-border/50">
-        <table className="w-full">
-          <thead className="bg-card/50">
+      {/* Fish table - compact */}
+      <div className="overflow-hidden rounded-xl border border-border/50 max-h-[200px] overflow-y-auto">
+        <table className="w-full text-xs">
+          <thead className="bg-card/50 sticky top-0">
             <tr>
-              <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Вид</th>
-              <th className="px-4 py-3 text-center text-sm font-medium text-muted-foreground">Кол-во</th>
-              <th className="px-4 py-3 text-center text-sm font-medium text-muted-foreground">Зона</th>
-              <th className="px-4 py-3 text-right text-sm font-medium text-muted-foreground">Сложность</th>
+              <th className="px-2 py-1.5 text-left font-medium text-muted-foreground">Вид</th>
+              <th className="px-2 py-1.5 text-center font-medium text-muted-foreground">Кол-во</th>
+              <th className="px-2 py-1.5 text-center font-medium text-muted-foreground">Зона</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border/50">
             {config.selectedFish.map((sf) => (
               <tr key={sf.fish.id} className="bg-card/30">
-                <td className="px-4 py-3">
-                  <div className="font-medium text-foreground">{sf.fish.name}</div>
-                  <div className="text-xs text-muted-foreground">{sf.fish.nameEn}</div>
+                <td className="px-2 py-1.5">
+                  <div className="font-medium text-foreground text-xs">{sf.fish.name}</div>
                 </td>
-                <td className="px-4 py-3 text-center font-semibold text-foreground">{sf.count}</td>
-                <td className="px-4 py-3 text-center">
-                  <span className="inline-flex items-center px-2 py-1 rounded text-xs bg-card text-muted-foreground">
+                <td className="px-2 py-1.5 text-center font-semibold text-foreground">{sf.count}</td>
+                <td className="px-2 py-1.5 text-center">
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] bg-card text-muted-foreground">
                     {sf.fish.zone === 'top' ? 'Верх' : sf.fish.zone === 'middle' ? 'Середина' : sf.fish.zone === 'bottom' ? 'Дно' : 'Все'}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-right text-sm text-muted-foreground">{sf.fish.careLevel}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      {/* Contact form */}
-      <form onSubmit={handleSubmit} className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/5 border border-primary/20">
-        <h4 className="font-semibold text-foreground mb-4">Получить расчёт и запуск</h4>
-        <div className="grid md:grid-cols-2 gap-4 mb-4">
+      {/* Contact form - compact */}
+      <form onSubmit={handleSubmit} className="p-3 rounded-xl bg-gradient-to-br from-primary/10 to-accent/5 border border-primary/20">
+        <h4 className="text-sm font-semibold text-foreground mb-2">Получить расчёт</h4>
+        <div className="grid md:grid-cols-2 gap-2 mb-2">
           <div>
-            <label className="block text-sm text-muted-foreground mb-2">Имя *</label>
+            <label className="block text-xs text-muted-foreground mb-1">Имя *</label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-card/50 border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-glow transition-all"
-              placeholder="Как к вам обращаться"
+              className="w-full px-2 py-1.5 rounded-lg bg-card/50 border border-border/50 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-glow transition-all"
+              placeholder="Имя"
             />
           </div>
           <div>
-            <label className="block text-sm text-muted-foreground mb-2">Телефон *</label>
+            <label className="block text-xs text-muted-foreground mb-1">Телефон *</label>
             <input
               type="tel"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-card/50 border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-glow transition-all"
+              className="w-full px-2 py-1.5 rounded-lg bg-card/50 border border-border/50 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-glow transition-all"
               placeholder="+7 (___) ___-__-__"
             />
           </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-sm text-muted-foreground mb-2">Комментарий</label>
+        <div className="mb-2">
+          <label className="block text-xs text-muted-foreground mb-1">Комментарий</label>
           <textarea
             value={formData.comment}
             onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
-            rows={3}
-            className="w-full px-4 py-3 rounded-xl bg-card/50 border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-glow transition-all resize-none"
-            placeholder="Дополнительные пожелания"
+            rows={2}
+            className="w-full px-2 py-1.5 rounded-lg bg-card/50 border border-border/50 text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:shadow-glow transition-all resize-none"
+            placeholder="Пожелания"
           />
         </div>
-        <div className="flex flex-col gap-4">
-          {/* Export buttons */}
-          <div className="flex flex-wrap gap-2 p-4 rounded-xl bg-card/30 border border-border/50">
-            <span className="text-sm text-muted-foreground w-full mb-2">Экспорт конфигурации:</span>
+        <div className="flex flex-col gap-2">
+          {/* Export buttons - compact */}
+          <div className="flex flex-wrap gap-1.5 p-2 rounded-lg bg-card/30 border border-border/50">
+            <span className="text-xs text-muted-foreground w-full mb-1">Экспорт:</span>
             <Button
               type="button"
               variant="glass"
               size="sm"
+              className="text-xs px-2 py-1 h-auto"
               onClick={() => {
                 exportToJSON(config);
-                toast.success('Конфигурация экспортирована в JSON');
+                toast.success('Экспортировано в JSON');
               }}
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-3 h-3 mr-1" />
               JSON
             </Button>
             <Button
               type="button"
               variant="glass"
               size="sm"
+              className="text-xs px-2 py-1 h-auto"
               onClick={() => {
                 exportToText(config);
-                toast.success('Конфигурация экспортирована в текстовый файл');
+                toast.success('Экспортировано в TXT');
               }}
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-3 h-3 mr-1" />
               TXT
             </Button>
             <Button
               type="button"
               variant="glass"
               size="sm"
+              className="text-xs px-2 py-1 h-auto"
               onClick={() => {
                 exportToPDF(config);
-                toast.success('Открыт диалог печати для сохранения в PDF');
+                toast.success('Открыт диалог печати');
               }}
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-3 h-3 mr-1" />
               PDF
             </Button>
           </div>
           
-          {/* Submit buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button type="button" variant="glass" onClick={onBack}>
-              <ArrowLeft className="w-5 h-5 mr-2" />
-              Изменить
+          {/* Submit buttons - compact */}
+          <div className="flex gap-2">
+            <Button type="button" variant="glass" size="sm" onClick={onBack}>
+              <ArrowLeft className="w-4 h-4 mr-1" />
+              Назад
             </Button>
-            <Button type="submit" variant="premium" size="lg" className="flex-1" disabled={isSubmitting}>
+            <Button type="submit" variant="premium" size="sm" className="flex-1" disabled={isSubmitting}>
               {isSubmitting ? (
                 'Отправка...'
               ) : (
                 <>
-                  <Send className="w-5 h-5 mr-2" />
-                  Получить расчёт от Bio-Cube
+                  <Send className="w-4 h-4 mr-1" />
+                  Отправить
                 </>
               )}
             </Button>

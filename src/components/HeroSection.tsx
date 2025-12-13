@@ -3,12 +3,12 @@ import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 
-export const HeroSection = () => {
+interface HeroSectionProps {
+  onOpenConfigurator: () => void;
+}
+
+export const HeroSection = ({ onOpenConfigurator }: HeroSectionProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  
-  const scrollToConfigurator = () => {
-    document.getElementById('configurator')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -97,7 +97,7 @@ export const HeroSection = () => {
               <Button 
                 variant="premium" 
                 size="xl"
-                onClick={scrollToConfigurator}
+                onClick={onOpenConfigurator}
                 className="group"
               >
                 Собрать аквариум
@@ -205,7 +205,7 @@ export const HeroSection = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center gap-2 cursor-pointer"
-          onClick={scrollToConfigurator}
+          onClick={onOpenConfigurator}
         >
           <span className="text-sm text-muted-foreground">Начать</span>
           <ChevronDown className="w-5 h-5 text-primary" />

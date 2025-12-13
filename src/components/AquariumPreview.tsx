@@ -35,22 +35,22 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="glass-card p-6 relative overflow-hidden"
+      className="glass-card p-3 relative overflow-hidden"
     >
-      {/* Header info */}
-      <div className="flex items-center justify-between mb-6">
+      {/* Header info - compact */}
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <h3 className="text-lg font-semibold text-foreground">{typeInfo?.name || 'Аквариум'}</h3>
-          <p className="text-sm text-muted-foreground">{config.volume}L • {config.interiorStyle}</p>
+          <h3 className="text-sm font-semibold text-foreground">{typeInfo?.name || 'Аквариум'}</h3>
+          <p className="text-xs text-muted-foreground">{config.volume}L</p>
         </div>
-        <div className="badge-premium">
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-foreground">Превью</span>
+        <div className="badge-premium text-xs px-2 py-0.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          <span className="text-foreground text-xs">Превью</span>
         </div>
       </div>
 
-      {/* Aquarium visualization */}
-      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-gradient-to-b from-[#0d1a24] via-[#0a121a] to-[#0a161f] border border-glass/10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.65)]">
+      {/* Aquarium visualization - compact */}
+      <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gradient-to-b from-[#0d1a24] via-[#0a121a] to-[#0a161f] border border-glass/10 shadow-lg">
         {/* Background video */}
         {config.backgroundVideo && (
           <video
@@ -264,21 +264,21 @@ export const AquariumPreview = ({ config }: AquariumPreviewProps) => {
         )}
       </div>
 
-      {/* Quick stats */}
-      <div className="grid grid-cols-3 gap-4 mt-6">
+      {/* Quick stats - compact */}
+      <div className="grid grid-cols-3 gap-2 mt-3">
         <div className="text-center">
-          <div className="text-2xl font-bold text-gradient">{config.selectedFish.length}</div>
-          <div className="text-xs text-muted-foreground">Видов</div>
+          <div className="text-lg font-bold text-gradient">{config.selectedFish.length}</div>
+          <div className="text-[10px] text-muted-foreground">Видов</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-gradient">
+          <div className="text-lg font-bold text-gradient">
             {config.selectedFish.reduce((acc, sf) => acc + sf.count, 0)}
           </div>
-          <div className="text-xs text-muted-foreground">Особей</div>
+          <div className="text-[10px] text-muted-foreground">Особей</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-gradient">{Math.round(fillPercentage)}%</div>
-          <div className="text-xs text-muted-foreground">Загрузка</div>
+          <div className="text-lg font-bold text-gradient">{Math.round(fillPercentage)}%</div>
+          <div className="text-[10px] text-muted-foreground">Загрузка</div>
         </div>
       </div>
     </motion.div>

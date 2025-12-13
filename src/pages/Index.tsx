@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { HeroSection } from '@/components/HeroSection';
 import { HowItWorksSection } from '@/components/HowItWorksSection';
 import { Configurator } from '@/components/Configurator';
@@ -6,11 +7,13 @@ import { GamificationSection } from '@/components/GamificationSection';
 import { Footer } from '@/components/Footer';
 
 const Index = () => {
+  const [isConfiguratorOpen, setIsConfiguratorOpen] = useState(false);
+
   return (
     <div className="min-h-screen">
-      <HeroSection />
-      <HowItWorksSection />
-      <Configurator />
+      <HeroSection onOpenConfigurator={() => setIsConfiguratorOpen(true)} />
+      <HowItWorksSection onOpenConfigurator={() => setIsConfiguratorOpen(true)} />
+      <Configurator isOpen={isConfiguratorOpen} onClose={() => setIsConfiguratorOpen(false)} />
       <AboutSection />
       <GamificationSection />
       <Footer />
