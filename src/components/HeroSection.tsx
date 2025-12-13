@@ -150,7 +150,7 @@ export const HeroSection = () => {
                 {/* Background video */}
                 <video
                   ref={videoRef}
-                  src="/Video 2.mp4"
+                  src="/video-2.mp4"
                   autoPlay
                   loop
                   muted

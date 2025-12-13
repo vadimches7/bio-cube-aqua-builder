@@ -15,7 +15,7 @@ export const Configurator = () => {
     experienceLevel: 'beginner',
     interiorStyle: 'minimalism',
     selectedFish: [],
-    backgroundVideo: '/Video 2.mp4', // Видео по умолчанию
+    backgroundVideo: '/video-2.mp4', // Видео по умолчанию
   });
 
   const updateConfig = useCallback((updates: Partial<AquariumConfig>) => {
