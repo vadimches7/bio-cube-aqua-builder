@@ -287,8 +287,8 @@ export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
           </div>
           </div>
 
-          {/* Actions - Fixed at bottom */}
-          <div className="flex gap-3 pt-4 mt-4 border-t border-border/50 flex-shrink-0">
+          {/* Actions - Fixed at bottom (outside scrollable area) */}
+          <div className="flex gap-3 pt-4 mt-auto border-t border-border/50 flex-shrink-0">
             <Button variant="glass" className="flex-1" onClick={onClose}>
               Отмена
             </Button>
