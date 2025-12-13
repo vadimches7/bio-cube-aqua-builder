@@ -236,65 +236,71 @@ export const ConfiguratorStep2 = ({ config, onAddFish, onBack, onNext }: Configu
         </div>
       </div>
 
-      {/* Main content: Fish list + Details panel */}
-      <div className="grid grid-cols-12 gap-3">
-        {/* Left: Fish grid */}
-        <div className={`col-span-12 ${selectedFish ? 'md:col-span-6' : 'md:col-span-12'} transition-all duration-300`}>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-[400px] overflow-y-auto pr-1 scrollbar-hide">
-            {filteredFish.map((fish) => (
-              <FishCard
-                key={fish.id}
-                fish={fish}
-                selected={isSelected(fish.id)}
-                onClick={() => setSelectedFish(fish)}
-              />
-            ))}
-          </div>
+      {/* Fish grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 max-h-[400px] overflow-y-auto pr-1 scrollbar-hide">
+        {filteredFish.map((fish) => (
+          <FishCard
+            key={fish.id}
+            fish={fish}
+            selected={isSelected(fish.id)}
+            onClick={() => setSelectedFish(fish)}
+          />
+        ))}
+      </div>
 
-          {filteredFish.length === 0 && (
-            <div className="text-center py-6 text-muted-foreground">
-              <p className="text-sm">Не найдено подходящих видов</p>
-              <p className="text-xs">Попробуйте изменить фильтры</p>
-            </div>
-          )}
-
-          {/* Family Recommendations - compact */}
-          {config.selectedFish.length > 0 && !selectedFish && (
-            <FamilyRecommendations
-              config={config}
-              availableFish={availableFish}
-              onFishClick={(fish) => setSelectedFish(fish)}
-              isSelected={isSelected}
-            />
-          )}
-
-          {/* Navigation - compact */}
-          <div className="flex justify-between pt-2 border-t border-border/50 mt-3">
-            <Button variant="glass" size="sm" onClick={onBack}>
-              <ArrowLeft className="w-4 h-4 mr-1" />
-              Назад
-            </Button>
-            <Button 
-              variant="premium" 
-              size="sm" 
-              onClick={onNext}
-              disabled={config.selectedFish.length === 0}
-            >
-              Далее
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </div>
+      {filteredFish.length === 0 && (
+        <div className="text-center py-6 text-muted-foreground">
+          <p className="text-sm">Не найдено подходящих видов</p>
+          <p className="text-xs">Попробуйте изменить фильтры</p>
         </div>
+      )}
 
-        {/* Right: Fish details panel - horizontal slide */}
-        <AnimatePresence>
-          {selectedFish && (
+      {/* Family Recommendations - compact */}
+      {config.selectedFish.length > 0 && !selectedFish && (
+        <FamilyRecommendations
+          config={config}
+          availableFish={availableFish}
+          onFishClick={(fish) => setSelectedFish(fish)}
+          isSelected={isSelected}
+        />
+      )}
+
+      {/* Navigation - compact */}
+      <div className="flex justify-between pt-2 border-t border-border/50 mt-3">
+        <Button variant="glass" size="sm" onClick={onBack}>
+          <ArrowLeft className="w-4 h-4 mr-1" />
+          Назад
+        </Button>
+        <Button 
+          variant="premium" 
+          size="sm" 
+          onClick={onNext}
+          disabled={config.selectedFish.length === 0}
+        >
+          Далее
+          <ArrowRight className="w-4 h-4 ml-1" />
+        </Button>
+      </div>
+
+      {/* Fish details panel - slide from right as overlay */}
+      <AnimatePresence>
+        {selectedFish && (
+          <>
+            {/* Backdrop */}
             <motion.div
-              initial={{ opacity: 0, x: 100 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-background/60 backdrop-blur-sm z-40"
+              onClick={() => setSelectedFish(null)}
+            />
+            {/* Panel */}
+            <motion.div
+              initial={{ opacity: 0, x: '100%' }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 100 }}
+              exit={{ opacity: 0, x: '100%' }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="col-span-12 md:col-span-6"
+              className="fixed top-0 right-0 h-full w-full max-w-md z-50 p-4"
             >
               <FishModal
                 fish={selectedFish}
@@ -303,9 +309,9 @@ export const ConfiguratorStep2 = ({ config, onAddFish, onBack, onNext }: Configu
                 onAdd={handleAddFish}
               />
             </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
