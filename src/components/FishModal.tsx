@@ -82,7 +82,7 @@ export const FishModal = ({ fish, config, onClose, onAdd }: FishModalProps) => {
   const canAdd = count > 0 && count <= maxAllowed && config.volume >= fish.minVolume;
 
   return (
-    <div className="glass-card p-3 h-full max-h-[calc(95vh-200px)] relative flex flex-col border border-border/50 rounded-xl overflow-hidden">
+    <div className="glass-card p-4 h-full relative flex flex-col border border-border/50 rounded-xl overflow-hidden bg-card/95 backdrop-blur-xl shadow-2xl">
       {/* Close button */}
       <button
         onClick={onClose}
